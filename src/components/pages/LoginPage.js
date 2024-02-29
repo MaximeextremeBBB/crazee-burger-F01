@@ -10,18 +10,26 @@
 
 // export default LoginPage;
 
-import React from "react";
+import React, { useState } from "react";
 
 const LoginPage = () => {
-    const [message, setMessage] = useState("");
-    const handleChange = (event) => {
-        setMessage(event.target.value);
-        console.log(event.target.value);
+    const [inputValue, setInputValue] = useState("");
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+        console.log(e.target.value);
     };
 
-    const handleClick = (event) => {
-        if (message != "") {
-            alert("Bonjour" + message);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert("Bonjour " + inputValue);
+        setInputValue("");
+    };
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if (inputValue !== "") {
+            alert("Bonjour " + inputValue);
         } else {
             alert("Veuillez rentrez un nom s'il vous plaît");
         }
@@ -34,6 +42,7 @@ const LoginPage = () => {
                     <p>
                         {" "}
                         <h1>Bienvenue chez nous !</h1>
+                        <br />
                     </p>
                 </div>
                 <div className="login">
@@ -41,15 +50,18 @@ const LoginPage = () => {
                         <h3>Connectez-vous</h3>
                     </div>
                 </div>
-                <form action="">
+                {/* <form action=""> */}
+                <form action="submit" onSubmit={handleSubmit}>
                     <input
+                        value={inputValue}
                         type="text"
                         onChange={handleChange}
-                        placeholder="Entrez votre prénom"
+                        placeholder="Entrez votre prénom..."
+                        required
                     />
                     <input
                         type="submit"
-                        onClick={handleClick}
+                        // onClick={handleClick}
                         value="Accédez à votre espace"
                     />
                 </form>
