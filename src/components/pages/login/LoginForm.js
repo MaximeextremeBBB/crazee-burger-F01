@@ -11,14 +11,14 @@ const LoginForm = () => {
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
-        console.log(e.target.value);
+        // console.log(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // setInputValue("");
+        setInputValue("");
         <OrderPage data={inputValue} />;
-        navigate("order");
+        navigate(`order/${inputValue}`);
     };
 
     const handleClick = (e) => {
@@ -33,7 +33,6 @@ const LoginForm = () => {
         // {/* <form action=""> */}
 
         <form action="submit" onSubmit={handleSubmit}>
-            <OrderPage data={inputValue} />
             <h1>Bienvenue chez nous !</h1>
             <br />
             <h2>Connectez-vous</h2>
@@ -49,10 +48,11 @@ const LoginForm = () => {
                 // onClick={handleClick}
                 value="Accédez à votre espace"
             />
-            <a href="/order">Vers order page (anchor link)</a> //l'inconvénient
-            de cette méthode c'est qu'elle refresh la page avec le Link on a pas
-            ce PropTypes.bool
-            <Link to="/order">vers orer page (Link)</Link>
+            <br />
+            {/* <a href="/order">Vers order page (anchor link)</a>{" "} */}
+            {/*//l'inconvénient de cette méthode c'est qu'elle refresh la page avec le Link on a pas ce PropTypes.bool */}
+            {/* <br /> */}
+            {/* <Link to="/order">vers order page (Link)</Link> */}
         </form>
     );
 };
