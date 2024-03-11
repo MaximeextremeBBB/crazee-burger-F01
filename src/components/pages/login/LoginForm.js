@@ -84,7 +84,7 @@ const LoginForm = () => {
                 {/* </TitleBackground> */}
                 {/* F03 présentation du ticket 17:35s Après le mot style il y a yne accolade c'est une interpolation jsx et donc on quitte le monde du jsx et on va dans du js la deuxième accolade , c'est pck c'est un objett js */}
                 {/* F03 présentation du ticket 19:20s ne pas oublier les guillemets à red car c'est un objet js */}
-                <br />
+                <hr />
                 <h2 style={titreH2style}>Connectez-vous</h2>
             </ContentStyled>
             {/* </div> */}
@@ -136,17 +136,35 @@ const LoginForm = () => {
 // `;
 
 const LoginFormStyled = styled.form`
-    /* background: url("${burgerBg}") no-repeat center/cover; */
+    background: green;
+    max-width: 500px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    border-radius: 5px;
     height: 100vh;
     text-align: center;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
     @font-face {
         font-family: "openSans";
         src: url("${openSans}");
     }
     font-family: openSans, sans-serif;
+    hr {
+        border: 1px solid #f56a2c;
+        margin-bottom: 40px;
+    }
+    h1 {
+        color: white;
+        font-size: 40px;
+    }
+    h2 {
+        color: #8e8b8b;
+        margin: 20px 10px 10px;
+        color: white;
+        font-size: 36px;
+    }
 `;
 
 const ContentStyled = styled.div`
