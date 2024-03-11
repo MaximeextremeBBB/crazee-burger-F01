@@ -142,10 +142,11 @@ const LoginForm = () => {
 // `;
 
 const LoginFormStyled = styled.form`
-    background: url("${burgerBg}") no-repeat center/cover;
+    /* background: url("${burgerBg}") no-repeat center/cover; */
     height: 100vh;
     text-align: center;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     @font-face {
         font-family: "openSans";
