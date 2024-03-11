@@ -7,12 +7,15 @@ import "./LoginForm.css";
 import { theme } from "../../../theme";
 import burgerBg from "../../../../src/assets/F03 burger-background.jpg";
 import logoOrange from "../../../../src/assets/F03 logo-orange.png";
+import amaticSC from "../../../../src/assets/fonts/AmaticSC-Regular.ttf";
+import openSans from "../../../../src/assets/fonts/OpenSans_Condensed-Medium.ttf";
 
 const LoginForm = () => {
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
     const titreH2style = {
-        backgroundColor: "blue",
+        // backgroundColor: "blue",
+        margin: "60px",
         color: "white",
         fontSize: 25,
     };
@@ -81,7 +84,7 @@ const LoginForm = () => {
                     </div>
                     <div className="right-part">BURGER</div>
                 </TitleStyled>
-                <h1 style={{ color: "red" }}>Bienvenue chez nous !</h1>
+                <h1>Bienvenue chez nous !</h1>
                 {/* </TitleBackground> */}
                 {/* F03 présentation du ticket 17:35s Après le mot style il y a yne accolade c'est une interpolation jsx et donc on quitte le monde du jsx et on va dans du js la deuxième accolade , c'est pck c'est un objett js */}
                 {/* F03 présentation du ticket 19:20s ne pas oublier les guillemets à red car c'est un objet js */}
@@ -131,29 +134,62 @@ const LoginFormStyled = styled.form`
     background: url("${burgerBg}") no-repeat center/cover;
     height: 100vh;
     text-align: center;
+    @font-face {
+        font-family: "openSans";
+        src: url("${openSans}");
+    }
+    font-family: openSans, sans-serif;
+    h1 {
+        color: white;
+        position: relative;
+        display: block;
+        margin: 50px auto;
+        width: 30%;
+        &:before {
+            position: absolute;
+            height: 1px;
+            content: "";
+            background: orange;
+            width: 100%;
+            margin: 0 -40px;
+            transform: translateY(120px);
+        }
+    }
 `;
 
 const TitleStyled = styled.div`
     display: flex;
     justify-content: center;
     color: orange;
+    @font-face {
+        font-family: "amaticSC";
+        src: url("${amaticSC}");
+    }
+
     font-size: 50px;
     padding: 150px;
+    font-family: amaticSC, sans-serif;
+    font-weight: 700;
+    font-style: normal;
     .left-part {
         width: 45%;
         text-align: right;
     }
     .middle-part {
         background: url("${logoOrange}") no-repeat center;
-        height: 100px;
+        height: 70px;
         background-size: 100% 100%;
         width: 10%;
+        margin: 0 40px;
     }
     .right-part {
         width: 45%;
         text-align: left;
     }
 `;
-const logoOrangeStyled = styled.p``;
+const hunStyled = styled.h1`
+    color: white;
+    background: red;
+`;
 
 export default LoginForm;
