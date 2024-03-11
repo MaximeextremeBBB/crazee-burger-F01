@@ -78,13 +78,7 @@ const LoginForm = () => {
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
             {/* <div className="container-text"> */}
             {/* <TitleBackground> */}
-            <TitleStyled>
-                <div className="left-part">CRAZEE</div>
-                <div className="middle-part">
-                    <img src="${logoOrange}" alt="" />
-                </div>
-                <div className="right-part">BURGER</div>
-            </TitleStyled>
+
             <ContentStyled>
                 <h1>Bienvenue chez nous !</h1>
                 {/* </TitleBackground> */}
@@ -153,37 +147,6 @@ const LoginFormStyled = styled.form`
         src: url("${openSans}");
     }
     font-family: openSans, sans-serif;
-`;
-
-const TitleStyled = styled.div`
-    display: flex;
-    justify-content: center;
-    color: orange;
-    @font-face {
-        font-family: "amaticSC";
-        src: url("${amaticSC}");
-    }
-
-    font-size: 50px;
-    padding: 150px;
-    font-family: amaticSC, sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    .left-part {
-        width: 45%;
-        text-align: right;
-    }
-    .middle-part {
-        background: url("${logoOrange}") no-repeat center;
-        height: 70px;
-        background-size: 100% 100%;
-        width: 10%;
-        margin: 0 40px;
-    }
-    .right-part {
-        width: 45%;
-        text-align: left;
-    }
 `;
 
 const ContentStyled = styled.div`
