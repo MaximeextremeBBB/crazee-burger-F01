@@ -9,7 +9,9 @@ import burgerBg from "../../../../src/assets/F03 burger-background.jpg";
 import logoOrange from "../../../../src/assets/F03 logo-orange.png";
 import amaticSC from "../../../../src/assets/fonts/AmaticSC-Regular.ttf";
 import openSans from "../../../../src/assets/fonts/OpenSans_Condensed-Medium.ttf";
-import { FaRegUserCircle } from "react-icons/fa";
+import Input from "../../reusable-ui/TextInput";
+import { BsPersonCircle } from "react-icons/bs";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 
 const LoginForm = () => {
     const [inputValue, setInputValue] = useState("");
@@ -88,28 +90,26 @@ const LoginForm = () => {
                 <h2 style={titreH2style}>Connectez-vous</h2>
             </ContentStyled>
             {/* </div> */}
-            <InputStyled>
-                <div className="userCircle">
-                    <FaRegUserCircle />
-                </div>
-                <input
-                    value={inputValue}
-                    type="text"
-                    onChange={handleChange}
-                    placeholder="Entrez votre prénom"
-                    required
-                    className="bonbon"
-                />
-            </InputStyled>
 
             <br />
-            <InputSubmitStyled>
+            <TextInput
+                value={inputValue}
+                onChange={handleChange}
+                placeholder={"Entrez votre prénom"}
+                Icon=<BsPersonCircle className="icon" />
+                required
+            />
+            <PrimaryButton
+                label={"Accèder à mon espace"}
+                Icon={<BsPersonCircle />}
+                className="icon"
+            >
                 <input
                     type="submit"
                     // onClick={handleClick}
                     value="Accédez à mon espace >"
                 />
-            </InputSubmitStyled>
+            </PrimaryButton>
             <br />
             {/* <a href="/order">Vers order page (anchor link)</a>{" "} */}
             {/*//l'inconvénient de cette méthode c'est qu'elle refresh la page avec le Link on a pas ce PropTypes.bool */}
@@ -140,8 +140,8 @@ const LoginFormStyled = styled.form`
     max-width: 500px;
     min-width: 400px;
     margin: 0 auto;
-    padding: 2.5rem 2rem;
-    border-radius: 5px;
+    padding: 40px ${theme.spacing.lg};
+    border-radius: ${theme.borderRadius.round};
     height: 100vh;
     text-align: center;
     display: flex;
@@ -152,18 +152,25 @@ const LoginFormStyled = styled.form`
     }
     font-family: openSans, sans-serif;
     hr {
-        border: 1px solid #f56a2c;
-        margin-bottom: 40px;
+        border: 1px solid ${theme.colors.loginLine};
+        margin-bottom: ${theme.gridUnit * 5}px;
     }
     h1 {
-        color: white;
-        font-size: 40px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.P5}px;
     }
     h2 {
         color: #8e8b8b;
         margin: 20px 10px 10px;
-        color: white;
-        font-size: 36px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.size.P4}px;
+    }
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: ${theme.fonts.size.P0}px;
+        margin-left: ;
     }
 `;
 
@@ -183,39 +190,6 @@ const ContentStyled = styled.div`
             margin: 0 -20px;
             transform: translateY(120px);
         }
-    }
-`;
-
-const InputStyled = styled.div`
-    border: 1px solid black;
-    background: white;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    width: 20%;
-    border-radius: 5px;
-    padding: 10px 0;
-    .userCircle {
-        margin: 0 10px;
-    }
-    input {
-        width: 90%;
-        border: none;
-    }
-`;
-
-const InputSubmitStyled = styled.div`
-    background: white;
-    border: 1px solid orange;
-    margin: 0 auto;
-    padding: 10px 0;
-    width: 20%;
-    cursor: pointer;
-    input {
-        background: white;
-        border: none;
-        color: orange;
-        border-radius: 5px;
     }
 `;
 

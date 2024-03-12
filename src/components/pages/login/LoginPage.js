@@ -13,7 +13,7 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
-import Logo from "../reusable-ui/Logo";
+import Logo from "../../reusable-ui/Logo";
 
 const LoginPage = () => {
     return (
