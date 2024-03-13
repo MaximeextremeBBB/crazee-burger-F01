@@ -1,40 +1,41 @@
-import React from "react";
-import { FaRegUserCircle } from "react-icons/fa";
+import styled from "styled-components"
+import { theme } from "../../theme"
 
-export default function Input({ value, onChange, Icon, ...restProps }) {
-    return (
-        <div>
-            <InputStyled>
-                <div className="userCircle">
-                    <FaRegUserCircle />
-                </div>
-                {Icon && Icon}
-                {/* F03 partie 3 17:50 s'il ya une icone alors je mets l'icône en typescript on aurait eu une eeerreur si on avait pas mis ça   */}
-                <input
-                    value={value}
-                    type="text"
-                    onChange={onChange}
-                    {...restProps}
-                />
-            </InputStyled>
-        </div>
-    );
+export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+  return (
+    <InputStyled>
+      {Icon && Icon}
+      <input onChange={onChange} type="text" {...extraProps} />
+    </InputStyled>
+  )
 }
 
 const InputStyled = styled.div`
-    border: 1px solid black;
-    background: white;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    width: 20%;
-    border-radius: 5px;
-    padding: 10px 0;
-    .userCircle {
-        margin: 0 10px;
+  background-color: #fff;
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  margin: 18px 0; // could be handle in Parent too
+  /* white-space: nowrap; */
+
+  .icon {
+    font-size: ${theme.fonts.size.P0};
+    margin-right: 8px;
+    color: ${theme.colors.greySemiDark};
+    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
+  }
+
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.P0};
+    color: ${theme.colors.dark};
+    width: 100%;
+    /* display: flex; */
+
+    &::placeholder {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyMedium};
     }
-    input {
-        width: 90%;
-        border: none;
-    }
-`;
+  }
+`
