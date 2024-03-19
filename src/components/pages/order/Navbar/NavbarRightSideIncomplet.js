@@ -8,7 +8,8 @@ import ToggleButton from "./ToggleButton";
 export default function NavbarRightSideIncomplet() {
     const [activated, setActivated] = useState(true);
 
-    const Notify = () => {
+    const Notify = (e) => {
+        e.preventDefault();
         // setActivated = !activated;
 
         // toast("Default Notification !");
@@ -57,8 +58,8 @@ export default function NavbarRightSideIncomplet() {
         // <div onClick={Activation}>
         <div
             onClick={function (e) {
-                Notify();
-                Activation();
+                Notify(e);
+                Activation(e);
             }}
         >
             <ToggleButton />
