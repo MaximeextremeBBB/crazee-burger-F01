@@ -9,6 +9,8 @@ export default function NavbarRightSideIncomplet() {
     const [activated, setActivated] = useState(true);
 
     const Notify = () => {
+        // setActivated = !activated;
+
         // toast("Default Notification !");
         if (activated) {
             toast.info("Mode admin activé", {
@@ -23,11 +25,9 @@ export default function NavbarRightSideIncomplet() {
                 progress: undefined,
             });
             console.log(activated);
-            console.log(setActivated);
-            setActivated = !activated;
+            // setActivated = !activated;
             console.log("rentrer dans la function notify activé");
             console.log(activated);
-            console.log(setActivated);
         } else {
             toast.info("Mode admin désactivé", {
                 // icon: <FaUserSecret size={30} />,
@@ -42,13 +42,25 @@ export default function NavbarRightSideIncomplet() {
             });
             console.log("rentrer dans la function notify désactivé");
 
-            setActivated = true;
+            // setActivated = true;
         }
+    };
+    const Activation = () => {
+        console.log("rentrer dans la function ACTIVATION");
+        console.log(activated);
+        setActivated(!activated);
+        console.log(activated);
     };
 
     return (
         // <div onClick={()=> setActivated(!activated)}>
-        <div onClick={Notify}>
+        // <div onClick={Activation}>
+        <div
+            onClick={function (e) {
+                Notify();
+                Activation();
+            }}
+        >
             <ToggleButton />
             <ToastContainer className="toaster" bodyClassName="body-toast" />
         </div>
