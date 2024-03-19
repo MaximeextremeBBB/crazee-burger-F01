@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "../../../../theme";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,28 +6,50 @@ import styled from "styled-components";
 import ToggleButton from "./ToggleButton";
 
 export default function NavbarRightSideIncomplet() {
+    const [activated, setActivated] = useState(true);
+
     const Notify = () => {
         // toast("Default Notification !");
-        toast.info("Mode admin activé", {
-            // icon: <FaUserSecret size={30} />,
-            theme: "dark",
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        console.log("rentrer dans la function notify");
+        if (activated) {
+            toast.info("Mode admin activé", {
+                // icon: <FaUserSecret size={30} />,
+                theme: "dark",
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            console.log(activated);
+            console.log(setActivated);
+            setActivated = !activated;
+            console.log("rentrer dans la function notify activé");
+            console.log(activated);
+            console.log(setActivated);
+        } else {
+            toast.info("Mode admin désactivé", {
+                // icon: <FaUserSecret size={30} />,
+                theme: "dark",
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            console.log("rentrer dans la function notify désactivé");
+
+            setActivated = true;
+        }
     };
 
     return (
-        <div>
-            <div onClick={(e) => Notify()}>
-                {/* Notify */}
-                <ToggleButton />
-            </div>
+        // <div onClick={()=> setActivated(!activated)}>
+        <div onClick={Notify}>
+            <ToggleButton />
             <ToastContainer className="toaster" bodyClassName="body-toast" />
         </div>
     );
