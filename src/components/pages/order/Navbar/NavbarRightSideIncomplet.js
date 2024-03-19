@@ -7,12 +7,24 @@ import ToggleButton from "./ToggleButton";
 
 export default function NavbarRightSideIncomplet() {
     const Notify = () => {
-        toast("Default Notification !");
+        // toast("Default Notification !");
+        toast.info("Mode admin activé", {
+            // icon: <FaUserSecret size={30} />,
+            theme: "dark",
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         console.log("rentrer dans la function notify");
     };
+
     return (
         <div>
-            <div onClick={Notify}>
+            <div onClick={(e) => Notify()}>
                 {/* Notify */}
                 <ToggleButton />
             </div>
