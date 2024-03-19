@@ -8,14 +8,15 @@ import ToggleButton from "./ToggleButton";
 export default function NavbarRightSideIncomplet() {
     const Notify = () => {
         toast("Default Notification !");
+        console.log("rentrer dans la function notify");
     };
     return (
         <div>
-            <button onclick={(e) => Notify()}>
-                Notify
-                {/* <ToggleButton /> */}
-            </button>
-            <ToastContainer />
+            <div onClick={Notify}>
+                {/* Notify */}
+                <ToggleButton />
+            </div>
+            <ToastContainer className="toaster" bodyClassName="body-toast" />
         </div>
     );
 }

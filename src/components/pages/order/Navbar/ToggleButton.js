@@ -5,7 +5,7 @@ import { theme } from "../../../../theme";
 export default function ToggleButton({
     isChecked,
     onToggle,
-    labelIfChecked = "Fermer",
+    labelIfChecked = "Mode Admin Désactivé",
     labelIfUnchecked = "Mode Amin activé",
 }) {
     return (
