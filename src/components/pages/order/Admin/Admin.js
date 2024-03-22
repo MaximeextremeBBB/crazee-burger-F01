@@ -18,14 +18,10 @@ export default function Admin() {
 
     const ajouterProduitFunction = () => {
         setToggleProduct(true);
-        console.log("Je rentre dans ajouter produit");
-        console.log(toggleProduct);
     };
 
     const editerProduitFunction = () => {
         setToggleProduct(false);
-        console.log("Je rentre dans modifier produit");
-        console.log(toggleProduct);
     };
 
     return (
@@ -38,6 +34,7 @@ export default function Admin() {
                 handleState={handleState}
                 adminState={adminState}
                 // setToggleProduct={setToggleProduct}
+                setAdminState={setAdminState}
                 ajouterProduitFunction={ajouterProduitFunction}
                 editerProduitFunction={editerProduitFunction}
             />
