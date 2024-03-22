@@ -22,6 +22,7 @@ export default function Admin() {
                 PlusIcon={<AiOutlinePlus className="icon" />}
                 EditIcon={<MdEdit className="icon" />}
                 handleState={handleState}
+                adminState={adminState}
             />
 
             {adminState ? <AdminContentStyled>Admin</AdminContentStyled> : ""}

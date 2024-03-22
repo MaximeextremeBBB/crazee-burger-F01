@@ -8,12 +8,12 @@ export default function IconsPosition({
     PlusIcon,
     EditIcon,
     handleState,
+    adminState,
 }) {
-    const [hideAdmin, setHideAdmin] = useState();
     return (
         <IconsPositionStyled>
             <ChevronUpPositionStyled onClick={handleState}>
-                {ChevronDownIcon && ChevronDownIcon}
+                {adminState ? ChevronDownIcon : ChevronUpIcon}
             </ChevronUpPositionStyled>
             <AddProductStyled>
                 <div className="plus">{PlusIcon && PlusIcon}</div>
