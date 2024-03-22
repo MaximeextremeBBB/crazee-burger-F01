@@ -6,12 +6,26 @@ import { IoChevronUp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import IconsPosition from "./IconsPosition";
+import AdminContent from "./AdminContent";
 
 export default function Admin() {
     const [adminState, setAdminState] = useState(true);
+    const [toggleProduct, setToggleProduct] = useState(true);
 
     const handleState = () => {
         setAdminState(!adminState);
+    };
+
+    const ajouterProduitFunction = () => {
+        setToggleProduct(true);
+        console.log("Je rentre dans ajouter produit");
+        console.log(toggleProduct);
+    };
+
+    const editerProduitFunction = () => {
+        setToggleProduct(false);
+        console.log("Je rentre dans modifier produit");
+        console.log(toggleProduct);
     };
 
     return (
@@ -23,19 +37,16 @@ export default function Admin() {
                 EditIcon={<MdEdit className="icon" />}
                 handleState={handleState}
                 adminState={adminState}
+                // setToggleProduct={setToggleProduct}
+                ajouterProduitFunction={ajouterProduitFunction}
+                editerProduitFunction={editerProduitFunction}
             />
 
-            {adminState ? <AdminContentStyled>Admin</AdminContentStyled> : ""}
+            {adminState ? <AdminContent toggleProduct={toggleProduct} /> : ""}
         </AdminStyled>
     );
 }
 
 const AdminStyled = styled.div`
     position: relative;
-`;
-
-const AdminContentStyled = styled.div`
-    background: red fixed;
-    height: 100px;
-    opacity: hidden;
 `;

@@ -9,17 +9,19 @@ export default function IconsPosition({
     EditIcon,
     handleState,
     adminState,
+    ajouterProduitFunction,
+    editerProduitFunction,
 }) {
     return (
         <IconsPositionStyled>
             <ChevronUpPositionStyled onClick={handleState}>
                 {adminState ? ChevronDownIcon : ChevronUpIcon}
             </ChevronUpPositionStyled>
-            <AddProductStyled>
+            <AddProductStyled onClick={ajouterProduitFunction}>
                 <div className="plus">{PlusIcon && PlusIcon}</div>
                 <div className="label-plus">Ajouter un produit</div>
             </AddProductStyled>
-            <EditProductStyled>
+            <EditProductStyled onClick={editerProduitFunction}>
                 <div className="edit">{EditIcon && EditIcon}</div>
                 <div className="label-edit">Modifier un produit</div>
             </EditProductStyled>
