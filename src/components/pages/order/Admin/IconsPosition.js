@@ -1,42 +1,32 @@
-import React from "react";
-import styled from "styled-components/macro";
-import { theme } from "../../../theme";
-import { IoChevronDown } from "react-icons/io5";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdEdit } from "react-icons/md";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { theme } from "../../../../theme";
 
-export default function Admin() {
+export default function IconsPosition({
+    ChevronDownIcon,
+    ChevronUpIcon,
+    PlusIcon,
+    EditIcon,
+}) {
+    const [hideAdmin, setHideAdmin] = useState();
     return (
-        <AdminStyled>
-            Admin
-            <IconsPosition>
-                <ChevronUpPositionStyled>
-                    <IoChevronDown />
-                </ChevronUpPositionStyled>
-                <AddProductStyled>
-                    <div className="plus">
-                        <AiOutlinePlus />
-                    </div>
-                    <div className="label-plus">Ajouter un produit</div>
-                </AddProductStyled>
-                <EditProductStyled>
-                    <div className="edit">
-                        <MdEdit />
-                    </div>
-                    <div className="label-edit">Modifier un produit</div>
-                </EditProductStyled>
-            </IconsPosition>
-        </AdminStyled>
+        <IconsPositionStyled>
+            <ChevronUpPositionStyled>
+                {ChevronDownIcon && ChevronDownIcon}
+            </ChevronUpPositionStyled>
+            <AddProductStyled>
+                <div className="plus">{PlusIcon && PlusIcon}</div>
+                <div className="label-plus">Ajouter un produit</div>
+            </AddProductStyled>
+            <EditProductStyled>
+                <div className="edit">{EditIcon && EditIcon}</div>
+                <div className="label-edit">Modifier un produit</div>
+            </EditProductStyled>
+        </IconsPositionStyled>
     );
 }
 
-const AdminStyled = styled.div`
-    background: red fixed;
-    height: 100px;
-    position: relative;
-`;
-
-const IconsPosition = styled.div`
+const IconsPositionStyled = styled.div`
     position: absolute;
     width: 100%;
     height: 44px;

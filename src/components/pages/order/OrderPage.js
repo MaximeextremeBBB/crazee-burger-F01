@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
-import Admin from "./Admin";
+import Admin from "./Admin/Admin";
 
 export default function OrderPage() {
     // state
