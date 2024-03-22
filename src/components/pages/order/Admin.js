@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { theme } from "../../../theme";
 import { IoChevronDown } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
+import { MdEdit } from "react-icons/md";
 
 export default function Admin() {
     return (
@@ -13,11 +14,17 @@ export default function Admin() {
                     <IoChevronDown />
                 </ChevronUpPositionStyled>
                 <AddProductStyled>
-                    <div>
+                    <div className="plus">
                         <AiOutlinePlus />
                     </div>
-                    <div>Ajouter un Produit</div>
+                    <div className="label-plus">Ajouter un produit</div>
                 </AddProductStyled>
+                <EditProductStyled>
+                    <div className="edit">
+                        <MdEdit />
+                    </div>
+                    <div className="label-edit">Modifier un produit</div>
+                </EditProductStyled>
             </IconsPosition>
         </AdminStyled>
     );
@@ -61,6 +68,45 @@ const AddProductStyled = styled.div`
     color: ${theme.colors.white};
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+
+    border-radius: 5px 5px 0px 0px;
+    .plus {
+        margin-top: 13px;
+        margin-bottom: 14px;
+        margin-right: 13px;
+        margin-left: 22px;
+    }
+    .label-plus {
+        /* margin-right: 22px; */
+        height: 22px;
+        margin-top: 10px;
+        margin-bottom: 11px;
+    }
+`;
+
+const EditProductStyled = styled.div`
+    width: 212px;
+    height: 43px;
+    background: ${theme.colors.white};
+    top: -46px;
+    left: 171px;
+    color: ${theme.colors.greyLight};
+    border-radius: 5px 5px 0px 0px;
+
+    display: flex;
+
+    .edit {
+        margin-top: 13px;
+        margin-bottom: 14px;
+        margin-right: 13px;
+        margin-left: 22px;
+    }
+    .label-edit {
+        /* margin-right: 22px; */
+        height: 22px;
+        margin-top: 10px;
+        margin-bottom: 11px;
+    }
 `;
