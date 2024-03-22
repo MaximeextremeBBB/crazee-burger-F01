@@ -7,11 +7,12 @@ export default function IconsPosition({
     ChevronUpIcon,
     PlusIcon,
     EditIcon,
+    handleState,
 }) {
     const [hideAdmin, setHideAdmin] = useState();
     return (
         <IconsPositionStyled>
-            <ChevronUpPositionStyled>
+            <ChevronUpPositionStyled onClick={handleState}>
                 {ChevronDownIcon && ChevronDownIcon}
             </ChevronUpPositionStyled>
             <AddProductStyled>
@@ -35,7 +36,7 @@ const IconsPositionStyled = styled.div`
     align-items: center;
 `;
 
-const ChevronUpPositionStyled = styled.div`
+const ChevronUpPositionStyled = styled.button`
     margin-left: 71px;
     height: 43px;
     width: 60px;
