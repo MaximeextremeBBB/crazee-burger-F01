@@ -22,9 +22,6 @@ export default function Admin() {
 
     const editerProduitFunction = () => {
         setToggleProduct(false);
-        if (setToggleProduct) {
-            document.body.style = "background: black;";
-        }
     };
 
     return (
