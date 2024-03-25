@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { theme } from "../../../../theme";
-import { IoChevronDown } from "react-icons/io5";
-import { IoChevronUp } from "react-icons/io5";
+import { FiChevronDown } from "react-icons/fi";
+import { FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { MdEdit } from "react-icons/md";
+import { MdModeEditOutline } from "react-icons/md";
 import IconsPosition from "./IconsPosition";
 import AdminContent from "./AdminContent";
 
@@ -27,10 +27,10 @@ export default function Admin() {
     return (
         <AdminStyled>
             <IconsPosition
-                ChevronDownIcon={<IoChevronDown className="icon" />}
-                ChevronUpIcon={<IoChevronUp className="icon" />}
+                ChevronDownIcon={<FiChevronDown className="icon" />}
+                ChevronUpIcon={<FiChevronUp className="icon" />}
                 PlusIcon={<AiOutlinePlus className="icon" />}
-                EditIcon={<MdEdit className="icon" />}
+                EditIcon={<MdModeEditOutline className="icon" />}
                 handleState={handleState}
                 adminState={adminState}
                 toggleProduct={toggleProduct}

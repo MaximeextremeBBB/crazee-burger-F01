@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import AddProduct from "./AddProduct";
 
 export default function IconsPosition({
     ChevronDownIcon,
@@ -23,17 +24,7 @@ export default function IconsPosition({
                 {adminState ? ChevronDownIcon : ChevronUpIcon}
             </ChevronUpPositionStyled>
             {/* <AddProductStyled onClick={ajouterProduitFunction}> */}
-            <AddProductStyled
-                toggleProduct={toggleProduct}
-                onClick={() => {
-                    ajouterProduitFunction();
-                    setAdminState(true);
-                }}
-            >
-                {/* // onClick={() => { func1(); func2();} */}
-                <div className="plus">{PlusIcon && PlusIcon}</div>
-                <div className="label-plus">Ajouter un produit</div>
-            </AddProductStyled>
+            <AddProduct />
             <EditProductStyled
                 toggleProduct={toggleProduct}
                 onClick={() => {
@@ -68,54 +59,15 @@ const ChevronUpPositionStyled = styled.button`
     /* background: dollar{theme.colors.white}; */
     background: ${(props) =>
         props.adminState ? theme.colors.white : theme.colors.background_dark};
-    color: ${theme.colors.greyLight};
+    /* color: dollar{theme.colors.greyLight}; */
+    color: ${(props) =>
+        props.adminState ? theme.colors.greySemiDark : theme.colors.white};
+
     border: 1px solid ${theme.colors.greyLight};
     border-radius: 5px 5px 0px 0px;
 
     &:hover {
         cursor: pointer;
-    }
-`;
-
-const AddProductStyled = styled.div`
-    width: 212.02px;
-    height: 43px;
-    /* background: dollar{theme.colors.background_dark}; */
-    background: ${(props) =>
-        props.toggleProduct
-            ? theme.colors.background_dark
-            : theme.colors.white};
-    top: -46px;
-    left: 171px;
-    /* color: dollar{theme.colors.white}; */
-    color: ${(props) =>
-        props.toggleProduct ? theme.colors.white : theme.colors.greySemiDark};
-
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
-
-    &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-    }
-
-    &:focus {
-        background: red;
-    }
-
-    border-radius: 5px 5px 0px 0px;
-    .plus {
-        margin-top: 13px;
-        margin-bottom: 14px;
-        margin-right: 13px;
-        margin-left: 22px;
-    }
-    .label-plus {
-        /* margin-right: 22px; */
-        height: 22px;
-        margin-top: 10px;
-        margin-bottom: 11px;
     }
 `;
 
