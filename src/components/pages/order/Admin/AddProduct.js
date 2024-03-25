@@ -6,11 +6,9 @@ import AdminStateContext from "../../../../context/AdminStateContext";
 import { AiOutlinePlus } from "react-icons/ai";
 
 export default function AddProduct() {
-    const { toggleProduct, ajouterProduitFunction } =
-        useContext(AddEditContext);
+    const { toggleProduct, setToggleProduct } = useContext(AddEditContext);
     // console.log(toggleProduct);
     // console.log(setToggleProduct);
-    // console.log(ajouterProduitFunction);
     const { setAdminState } = useContext(AdminStateContext);
     // const [plusIcon] = useContext(PlusIconcontext);
 
@@ -18,7 +16,7 @@ export default function AddProduct() {
         <AddProductStyled
             toggleProduct={toggleProduct}
             onClick={() => {
-                ajouterProduitFunction();
+                setToggleProduct(true);
                 setAdminState(true);
             }}
         >

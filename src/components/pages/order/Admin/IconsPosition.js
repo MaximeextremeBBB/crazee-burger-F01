@@ -7,14 +7,8 @@ import EditProduct from "./EditProduct";
 export default function IconsPosition({
     ChevronDownIcon,
     ChevronUpIcon,
-    PlusIcon,
-    EditIcon,
     handleState,
-    toggleProduct,
     adminState,
-    setAdminState,
-    ajouterProduitFunction,
-    editerProduitFunction,
 }) {
     return (
         <IconsPositionStyled>
@@ -24,7 +18,6 @@ export default function IconsPosition({
             >
                 {adminState ? ChevronDownIcon : ChevronUpIcon}
             </ChevronUpPositionStyled>
-            {/* <AddProductStyled onClick={ajouterProduitFunction}> */}
             <AddProduct />
             <EditProduct />
         </IconsPositionStyled>

@@ -6,15 +6,14 @@ import { theme } from "../../../../theme";
 import { MdModeEditOutline } from "react-icons/md";
 
 export default function EditProduct() {
-    const { toggleProduct, ajouterProduitFunction, editerProduitFunction } =
-        useContext(AddEditContext);
+    const { toggleProduct, setToggleProduct } = useContext(AddEditContext);
     const { setAdminState } = useContext(AdminStateContext);
 
     return (
         <EditProductStyled
             toggleProduct={toggleProduct}
             onClick={() => {
-                editerProduitFunction();
+                setToggleProduct(false);
                 setAdminState(true);
             }}
         >
