@@ -22,6 +22,9 @@ export default function Admin() {
 
     const editerProduitFunction = () => {
         setToggleProduct(false);
+        if (setToggleProduct) {
+            document.body.style = "background: black;";
+        }
     };
 
     return (
@@ -33,6 +36,7 @@ export default function Admin() {
                 EditIcon={<MdEdit className="icon" />}
                 handleState={handleState}
                 adminState={adminState}
+                toggleProduct={toggleProduct}
                 // setToggleProduct={setToggleProduct}
                 setAdminState={setAdminState}
                 ajouterProduitFunction={ajouterProduitFunction}

@@ -8,6 +8,7 @@ export default function IconsPosition({
     PlusIcon,
     EditIcon,
     handleState,
+    toggleProduct,
     adminState,
     setAdminState,
     ajouterProduitFunction,
@@ -15,11 +16,15 @@ export default function IconsPosition({
 }) {
     return (
         <IconsPositionStyled>
-            <ChevronUpPositionStyled onClick={handleState}>
+            <ChevronUpPositionStyled
+                onClick={handleState}
+                adminState={adminState}
+            >
                 {adminState ? ChevronDownIcon : ChevronUpIcon}
             </ChevronUpPositionStyled>
             {/* <AddProductStyled onClick={ajouterProduitFunction}> */}
             <AddProductStyled
+                toggleProduct={toggleProduct}
                 onClick={() => {
                     ajouterProduitFunction();
                     setAdminState(true);
@@ -59,23 +64,44 @@ const ChevronUpPositionStyled = styled.button`
     align-items: center;
     justify-content: center;
 
-    background: ${theme.colors.white};
+    /* background: dollar{theme.colors.white}; */
+    background: ${(props) =>
+        props.adminState ? theme.colors.white : theme.colors.background_dark};
     color: ${theme.colors.greyLight};
     border: 1px solid ${theme.colors.greyLight};
     border-radius: 5px 5px 0px 0px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const AddProductStyled = styled.div`
     width: 212.02px;
     height: 43px;
-    background: ${theme.colors.background_dark};
+    /* background: dollar{theme.colors.background_dark}; */
+    background: ${(props) =>
+        props.toggleProduct
+            ? theme.colors.background_dark
+            : theme.colors.white};
     top: -46px;
     left: 171px;
-    color: ${theme.colors.white};
+    /* color: dollar{theme.colors.white}; */
+    color: ${(props) =>
+        props.toggleProduct ? theme.colors.white : theme.colors.greySemiDark};
 
     display: flex;
     /* justify-content: center;
     align-items: center; */
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    &:focus {
+        background: red;
+    }
 
     border-radius: 5px 5px 0px 0px;
     .plus {
@@ -102,6 +128,15 @@ const EditProductStyled = styled.div`
     border-radius: 5px 5px 0px 0px;
 
     display: flex;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    &:active {
+        background: red;
+    }
 
     .edit {
         margin-top: 13px;
