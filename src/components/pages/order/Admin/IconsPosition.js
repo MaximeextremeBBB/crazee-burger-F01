@@ -35,6 +35,7 @@ export default function IconsPosition({
                 <div className="label-plus">Ajouter un produit</div>
             </AddProductStyled>
             <EditProductStyled
+                toggleProduct={toggleProduct}
                 onClick={() => {
                     editerProduitFunction();
                     setAdminState(true);
@@ -121,10 +122,17 @@ const AddProductStyled = styled.div`
 const EditProductStyled = styled.div`
     width: 212px;
     height: 43px;
-    background: ${theme.colors.white};
+    /* background: dollar{theme.colors.white}; */
+    background: ${(props) =>
+        props.toggleProduct
+            ? theme.colors.white
+            : theme.colors.background_dark};
+
+    /* color: dollar{theme.colors.greyLight}; */
+    color: ${(props) =>
+        props.toggleProduct ? theme.colors.greySemiDark : theme.colors.white};
     top: -46px;
     left: 171px;
-    color: ${theme.colors.greyLight};
     border-radius: 5px 5px 0px 0px;
 
     display: flex;
@@ -132,10 +140,6 @@ const EditProductStyled = styled.div`
     &:hover {
         cursor: pointer;
         text-decoration: underline;
-    }
-
-    &:active {
-        background: red;
     }
 
     .edit {
