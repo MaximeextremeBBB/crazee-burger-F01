@@ -14,21 +14,6 @@ export default function Admin() {
     const [adminState, setAdminState] = useState(true);
     const [toggleProduct, setToggleProduct] = useState(true);
 
-    const ajouterProduitFunction = () => {
-        setToggleProduct(true);
-    };
-
-    const toggleProductValue = {
-        toggleProduct,
-        setToggleProduct,
-        ajouterProduitFunction,
-    };
-
-    const adminStateValue = {
-        adminState,
-        setAdminState,
-    };
-
     //function
     const handleState = () => {
         setAdminState(!adminState);
@@ -36,6 +21,21 @@ export default function Admin() {
 
     const editerProduitFunction = () => {
         setToggleProduct(false);
+    };
+
+    const ajouterProduitFunction = () => {
+        setToggleProduct(true);
+    };
+
+    // Using Context
+    const toggleProductValue = {
+        toggleProduct,
+        ajouterProduitFunction,
+        editerProduitFunction,
+    };
+
+    const adminStateValue = {
+        setAdminState,
     };
 
     return (
