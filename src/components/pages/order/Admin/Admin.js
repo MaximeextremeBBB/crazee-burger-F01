@@ -1,23 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import { theme } from "../../../../theme";
 import { FiChevronDown } from "react-icons/fi";
 import { FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import IconsPosition from "./IconsPosition";
 import AdminContent from "./AdminContent";
+import AddEditContext from "../../../../context/AddEditContext";
+import AdminStateContext from "../../../../context/AdminStateContext";
+import PlusIconcontext from "../../../../context/PlusIconcontext";
 
 export default function Admin() {
     const [adminState, setAdminState] = useState(true);
     const [toggleProduct, setToggleProduct] = useState(true);
 
-    const handleState = () => {
-        setAdminState(!adminState);
-    };
-
     const ajouterProduitFunction = () => {
         setToggleProduct(true);
+    };
+
+    const toggleProductValue = {
+        toggleProduct,
+        setToggleProduct,
+        ajouterProduitFunction,
+    };
+
+    const adminStateValue = {
+        adminState,
+        setAdminState,
+    };
+
+    //function
+    const handleState = () => {
+        setAdminState(!adminState);
     };
 
     const editerProduitFunction = () => {
@@ -26,20 +40,25 @@ export default function Admin() {
 
     return (
         <AdminStyled>
-            <IconsPosition
-                ChevronDownIcon={<FiChevronDown className="icon" />}
-                ChevronUpIcon={<FiChevronUp className="icon" />}
-                PlusIcon={<AiOutlinePlus className="icon" />}
-                EditIcon={<MdModeEditOutline className="icon" />}
-                handleState={handleState}
-                adminState={adminState}
-                toggleProduct={toggleProduct}
-                // setToggleProduct={setToggleProduct}
-                setAdminState={setAdminState}
-                ajouterProduitFunction={ajouterProduitFunction}
-                editerProduitFunction={editerProduitFunction}
-            />
-
+            <AddEditContext.Provider value={toggleProductValue}>
+                <AdminStateContext.Provider value={adminStateValue}>
+                    {/* <PlusIconcontext.Provider value={plusIconValue}> */}
+                    <IconsPosition
+                        ChevronDownIcon={<FiChevronDown className="icon" />}
+                        ChevronUpIcon={<FiChevronUp className="icon" />}
+                        PlusIcon={<AiOutlinePlus className="icon" />}
+                        EditIcon={<MdModeEditOutline className="icon" />}
+                        handleState={handleState}
+                        adminState={adminState}
+                        // toggleProduct={toggleProduct}
+                        // setToggleProduct={setToggleProduct}
+                        setAdminState={setAdminState}
+                        ajouterProduitFunction={ajouterProduitFunction}
+                        editerProduitFunction={editerProduitFunction}
+                    />
+                    {/* </PlusIconcontext.Provider> */}
+                </AdminStateContext.Provider>
+            </AddEditContext.Provider>
             {adminState ? <AdminContent toggleProduct={toggleProduct} /> : ""}
         </AdminStyled>
     );

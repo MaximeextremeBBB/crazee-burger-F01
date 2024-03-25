@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { theme } from "../../../../theme";
 import styled from "styled-components";
+import AddEditContext from "../../../../context/AddEditContext";
+import AdminStateContext from "../../../../context/AdminStateContext";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function AddProduct() {
+    const { toggleProduct, setToggleProduct, ajouterProduitFunction } =
+        useContext(AddEditContext);
+    console.log(toggleProduct);
+    // console.log(setToggleProduct);
+    console.log(ajouterProduitFunction);
+    const { adminState, setAdminState } = useContext(AdminStateContext);
+    // const [plusIcon] = useContext(PlusIconcontext);
+
     return (
         <AddProductStyled
             toggleProduct={toggleProduct}
@@ -12,7 +23,8 @@ export default function AddProduct() {
             }}
         >
             {/* // onClick={() => { func1(); func2();} */}
-            <div className="plus">{PlusIcon && PlusIcon}</div>
+            {/* <div className="plus">{PlusIcon && PlusIcon}</div> */}
+            <div className="plus">{<AiOutlinePlus />}</div>
             <div className="label-plus">Ajouter un produit</div>
         </AddProductStyled>
     );

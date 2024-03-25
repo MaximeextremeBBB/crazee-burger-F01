@@ -8,7 +8,7 @@ export default function AdminContent({ toggleProduct }) {
             {toggleProduct ? (
                 <AdminContentStyled>Ajouter un produit</AdminContentStyled>
             ) : (
-                <AdminContentStyled>Edit Product</AdminContentStyled>
+                <AdminContentStyled>Modifier un Produit</AdminContentStyled>
             )}
         </div>
     );
