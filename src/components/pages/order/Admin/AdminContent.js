@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 
 export default function AdminContent({ toggleProduct }) {
+    // console.log(toggleProduct);
     return (
         <div>
             {toggleProduct ? (

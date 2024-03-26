@@ -11,7 +11,6 @@ export default function AddProduct() {
     // console.log(setToggleProduct);
     const { setAdminState } = useContext(AdminStateContext);
     // const [plusIcon] = useContext(PlusIconcontext);
-
     return (
         <AddProductStyled
             toggleProduct={toggleProduct}
