@@ -7,13 +7,13 @@ import EditProduct from "./EditProduct";
 export default function IconsPosition({
     ChevronDownIcon,
     ChevronUpIcon,
-    handleState,
+    setAdminState,
     adminState,
 }) {
     return (
         <IconsPositionStyled>
             <ChevronUpPositionStyled
-                onClick={handleState}
+                onClick={() => setAdminState(!adminState)}
                 adminState={adminState}
             >
                 {adminState ? ChevronDownIcon : ChevronUpIcon}

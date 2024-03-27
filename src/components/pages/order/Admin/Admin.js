@@ -6,17 +6,14 @@ import IconsPosition from "./IconsPosition";
 import AdminContent from "./AdminContent";
 import AddEditContext from "../../../../context/AddEditContext";
 import AdminStateContext from "../../../../context/AdminStateContext";
-import IsModeAdminContext from "../../../../context/IsModeAdminContext";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function Admin() {
     const [adminState, setAdminState] = useState(true);
     const [toggleProduct, setToggleProduct] = useState(true);
-    const { isModeAdmin, setIsModeAdmin } = useContext(IsModeAdminContext);
-    console.log(isModeAdmin);
+    const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext);
+    // console.log(isModeAdmin);
     //function
-    const handleState = () => {
-        setAdminState(!adminState);
-    };
 
     // Using Context
     const toggleProductValue = {
@@ -30,24 +27,22 @@ export default function Admin() {
 
     return (
         <AdminStyled>
-            <AddEditContext.Provider
-                value={isModeAdmin ? toggleProductValue : ""}
-            >
+            <AddEditContext.Provider value={toggleProductValue}>
                 <AdminStateContext.Provider value={adminStateValue}>
                     {/* <PlusIconcontext.Provider value={plusIconValue}> */}
                     {isModeAdmin ? (
                         <IconsPosition
                             ChevronDownIcon={<FiChevronDown className="icon" />}
                             ChevronUpIcon={<FiChevronUp className="icon" />}
-                            handleState={handleState}
                             adminState={adminState}
+                            setAdminState={setAdminState}
                             // toggleProduct={toggleProduct}
                             // setToggleProduct={setToggleProduct}
-                            setAdminState={setAdminState}
                         />
                     ) : (
                         ""
                     )}
+
                     {/* </PlusIconcontext.Provider> */}
                 </AdminStateContext.Provider>
             </AddEditContext.Provider>
