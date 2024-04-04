@@ -17,6 +17,7 @@ export default function OrderPage() {
     const [isEdited, setIsEdited] = useState(false);
     const [isCardSelected, setIsCardSelected] = useState(false);
     const editRef = useRef();
+    console.log(editRef.current);
 
     // comportements
     const handleAdd = (newProduct) => {
@@ -35,6 +36,8 @@ export default function OrderPage() {
             console.log("on est dans la fonction handleEdit");
             setIsCardSelected(true);
             console.log(isCardSelected);
+            console.log(editRef.current);
+            // editRef.current.focus();
         }
     };
 
@@ -56,6 +59,11 @@ export default function OrderPage() {
         setMenu(fakeMenu.MEDIUM);
     };
 
+    const test = () => {
+        editRef.current.focus();
+        console.log(editRef);
+    };
+
     const orderContextValue = {
         isModeAdmin,
         setIsModeAdmin,
@@ -74,6 +82,7 @@ export default function OrderPage() {
         setIsEdited,
         isCardSelected,
         setIsCardSelected,
+        editRef,
     };
 
     //affichage
@@ -83,6 +92,10 @@ export default function OrderPage() {
                 <div className="container">
                     <Navbar />
                     <Main />
+                    {/* <input ref={editRef} type="text" />
+                    <button onClick={test}>
+                        TESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSST
+                    </button> */}
                 </div>
             </OrderPageStyled>
         </OrderContext.Provider>

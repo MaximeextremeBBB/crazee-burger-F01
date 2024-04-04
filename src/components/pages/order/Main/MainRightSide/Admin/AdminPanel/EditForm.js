@@ -12,33 +12,30 @@ import { tabsConfig } from "../tabsConfig";
 
 export default function EditForm() {
     // state
-    const { newProduct, isEdited, isCardSelected, setIsEdited, setNewProduct } =
-        useContext(OrderContext);
-    if (isEdited) {
-        // alert("vous êtes dans le composant EditForm.js");
-    }
+    const {
+        newProduct,
+        isEdited,
+        isCardSelected,
+        setIsEdited,
+        setNewProduct,
+        editRef,
+    } = useContext(OrderContext);
+
+    console.log(editRef);
     // const tabs = tabsConfig;
     // console.log(tabs[0].index);
 
     // comportements
-    // COMPORTEMENT DU ADD FORM
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const newProductToAdd = {
-    //         ...newProduct,
-    //         id: crypto.randomUUID(),
-    //     };
 
-    //     handleAdd(newProductToAdd);
-    //     setNewProduct(EMPTY_PRODUCT);
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setNewProduct({ ...newProduct, [name]: value });
+    };
 
-    //     displaySuccessMessage();
-    // };
-
-    // const handleChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setNewProduct({ ...newProduct, [name]: value });
-    // };
+    const test2 = () => {
+        console.log(editRef.current);
+        editRef.current.focus();
+    };
 
     const inputTexts = getInputTextsConfig(newProduct);
 
@@ -49,22 +46,36 @@ export default function EditForm() {
                 imageSource={newProduct.imageSource}
                 title={newProduct.title}
             />
-            <div>
-                <div className="input-fields">
-                    {inputTexts.map((input) => (
-                        <TextInput
-                            {...input}
-                            key={input.id}
-                            version="minimalist"
-                        />
-                    ))}
-                </div>
-                <div className="">
-                    <p>
-                        Cliquer sur un produit du menu pour le modifier en tmps
-                        réél{" "}
-                    </p>
-                </div>
+            <div className="input-fields">
+                {inputTexts.map((input) => (
+                    // <TextInput
+                    //     // {...input}
+                    //     // ref={editRef}
+                    //     name={input.name}
+                    //     value={input.value}
+                    //     placeholder={input.placeholder}
+                    //     key={input.id}
+                    //     Icon={input.Icon}
+                    //     version="minimalist"
+                    //     version="minimalist"
+                    //     onChange={handleChange}
+
+                    // />
+                    <TextInput
+                        {...input}
+                        ref={editRef}
+                        key={input.id}
+                        onChange={handleChange}
+                        version="minimalist"
+                    />
+                ))}
+                {/* <input type="text" ref={editRef} /> */}
+            </div>
+            <div className="submit">
+                <p>
+                    Cliquer sur un produit du menu pour le modifier en tmps réél{" "}
+                    <button onClick={test2}>TEEEEEEEEEEEEEEEST</button>
+                </p>
             </div>
         </EditFormStyled>
     ) : (

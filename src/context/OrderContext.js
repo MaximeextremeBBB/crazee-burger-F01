@@ -24,4 +24,6 @@ export default createContext({
 
     isCardSelected: true,
     setIsCardSelected: () => {},
+
+    editRef: {},
 });
