@@ -18,7 +18,7 @@ export default function EditForm({ trigger }) {
     const { handleAdd, newProduct, isEdited, setIsEdited, setNewProduct } =
         useContext(OrderContext);
     if (isEdited) {
-        alert("vous êtes dans le composant EditForm.js");
+        // alert("vous êtes dans le composant EditForm.js");
     }
     // const tabs = tabsConfig;
     // console.log(tabs[0].index);
@@ -49,6 +49,7 @@ export default function EditForm({ trigger }) {
     return (
         <EditFormStyled>
             <p>Cliquer sur un produit pour le modifier</p>
+            {isEdited ? console.log("vous dans le composant EditForm.js") : ""}
             {/* {currentTabSelected == "edit" ? (
                 // <ImagePreview
                 //     imageSource={newProduct.imageSource}

@@ -32,6 +32,7 @@ export default function Menu() {
 
     return (
         <MenuStyled className="menu">
+            {/* {isEdited ? console.log("On est dans Menu.js") : ""} */}
             {menu.map(({ id, title, imageSource, price }) => {
                 return (
                     <Card
@@ -43,6 +44,7 @@ export default function Menu() {
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={() => handleDelete(id)}
+                        onEdit={() => handleEdit()}
                     />
                 );
             })}

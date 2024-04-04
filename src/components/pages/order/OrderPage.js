@@ -29,12 +29,8 @@ export default function OrderPage() {
     };
 
     const handleEdit = () => {
-        if (currentTabSelected === "add") {
-            setIsEdited(true);
-            console.log(isEdited);
-        } else if (currentTabSelected === "edit") {
-            setIsEdited(false);
-            console.log(isEdited);
+        if (isEdited) {
+            console.log("on est dans la fon tion handleEdit");
         }
     };
 
