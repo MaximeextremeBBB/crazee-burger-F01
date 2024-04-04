@@ -45,40 +45,27 @@ export default function EditForm() {
     // affichage
     return isCardSelected ? (
         <EditFormStyled>
-            {/* {currentTabSelected == "edit" ? (
-                // <ImagePreview
-                //     imageSource={newProduct.imageSource}
-                //     title={newProduct.title}
-                // />
-                partie 1
-            ) : (
-                ""
-            )}
-            {currentTabSelected == "edit" ? (
-                // <div className="input-fields">
-                //     {inputTexts.map((input) => (
-                //         <TextInput
-                //             {...input}
-                //             key={input.id}
-                //             // onChange={handleChange}
-                //             version="minimalist"
-                //         />
-                //     ))}
-                // </div>
-            ) : (
-                ""
-            )}
-            {currentTabSelected == "edit" ? (
-                <div className="submit">
-                    <Button
-                        className="submit-button"
-                        label={"Ajouter un nouveau produit au menu"}
-                        version="success"
-                    />
+            <ImagePreview
+                imageSource={newProduct.imageSource}
+                title={newProduct.title}
+            />
+            <div>
+                <div className="input-fields">
+                    {inputTexts.map((input) => (
+                        <TextInput
+                            {...input}
+                            key={input.id}
+                            version="minimalist"
+                        />
+                    ))}
                 </div>
-            ) : (
-                ""
-            )} */}
+                <div className="">
+                    <p>
+                        Cliquer sur un produit du menu pour le modifier en tmps
+                        réél{" "}
+                    </p>
+                </div>
+            </div>
         </EditFormStyled>
     ) : (
         <p>Cliquer sur un produit pour le modifier</p>
