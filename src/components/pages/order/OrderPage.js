@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
@@ -15,6 +15,8 @@ export default function OrderPage() {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM);
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [isEdited, setIsEdited] = useState(false);
+    const [isCardSelected, setIsCardSelected] = useState(false);
+    const editRef = useRef();
 
     // comportements
     const handleAdd = (newProduct) => {
@@ -30,7 +32,9 @@ export default function OrderPage() {
 
     const handleEdit = () => {
         if (isEdited) {
-            console.log("on est dans la fon tion handleEdit");
+            console.log("on est dans la fonction handleEdit");
+            setIsCardSelected(true);
+            console.log(isCardSelected);
         }
     };
 
@@ -68,6 +72,8 @@ export default function OrderPage() {
         handleEdit,
         isEdited,
         setIsEdited,
+        isCardSelected,
+        setIsCardSelected,
     };
 
     //affichage

@@ -21,4 +21,7 @@ export default createContext({
     isEdited: true,
     setIsEdited: () => {},
     handleEdit: () => {},
+
+    isCardSelected: true,
+    setIsCardSelected: () => {},
 });

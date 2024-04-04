@@ -10,12 +10,9 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { tabsConfig } from "../tabsConfig";
 
-export default function EditForm({ trigger }) {
-    // console.log(trigger);
-    const { currentTabSelected } = useContext(OrderContext);
-
+export default function EditForm() {
     // state
-    const { handleAdd, newProduct, isEdited, setIsEdited, setNewProduct } =
+    const { newProduct, isEdited, isCardSelected, setIsEdited, setNewProduct } =
         useContext(OrderContext);
     if (isEdited) {
         // alert("vous êtes dans le composant EditForm.js");
@@ -46,10 +43,8 @@ export default function EditForm({ trigger }) {
     const inputTexts = getInputTextsConfig(newProduct);
 
     // affichage
-    return (
+    return isCardSelected ? (
         <EditFormStyled>
-            <p>Cliquer sur un produit pour le modifier</p>
-            {isEdited ? console.log("vous dans le composant EditForm.js") : ""}
             {/* {currentTabSelected == "edit" ? (
                 // <ImagePreview
                 //     imageSource={newProduct.imageSource}
@@ -85,6 +80,8 @@ export default function EditForm({ trigger }) {
                 ""
             )} */}
         </EditFormStyled>
+    ) : (
+        <p>Cliquer sur un produit pour le modifier</p>
     );
 }
 

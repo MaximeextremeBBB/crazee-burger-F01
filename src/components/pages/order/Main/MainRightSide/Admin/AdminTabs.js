@@ -15,6 +15,8 @@ export default function AdminTabs() {
         setCurrentTabSelected,
         isEdited,
         setIsEdited,
+        isCardSelected,
+        setIsCardSelected,
     } = useContext(OrderContext);
     // comportements
     const selectTab = (tabSelected, event) => {
@@ -22,16 +24,13 @@ export default function AdminTabs() {
         setIsCollapsed(false); // tu m'ouvres le pannel
         setCurrentTabSelected(tabSelected);
         if (tabSelected == "add") {
-            console.log("je suis rentré dans add");
-            console.log(isEdited);
             setIsEdited(false);
-            console.log(isEdited);
+            setIsCardSelected(false);
+            console.log(isCardSelected);
         }
         if (tabSelected == "edit") {
             console.log("je suis rentré dans edit");
-            console.log(isEdited);
             setIsEdited(true);
-            console.log(isEdited);
         }
     };
 
