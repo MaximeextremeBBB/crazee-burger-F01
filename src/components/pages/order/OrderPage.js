@@ -15,9 +15,10 @@ export default function OrderPage() {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM);
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [isEdited, setIsEdited] = useState(false);
+    const [idOfMenu, setIdOfMenu] = useState(1);
     const [isCardSelected, setIsCardSelected] = useState(false);
     const editRef = useRef();
-    console.log(editRef.current);
+    // console.log(editRef.current);
 
     // comportements
     const handleAdd = (newProduct) => {
@@ -31,13 +32,23 @@ export default function OrderPage() {
         setMenu(menuUpdated);
     };
 
-    const handleEdit = () => {
+    const handleEdit = (idOfProductToEdited, title, imageSource, price) => {
         if (isEdited) {
             console.log("on est dans la fonction handleEdit");
             setIsCardSelected(true);
             console.log(isCardSelected);
             console.log(editRef.current);
-            // editRef.current.focus();
+            console.log(
+                idOfProductToEdited +
+                    " " +
+                    title +
+                    " " +
+                    imageSource +
+                    " " +
+                    price
+            );
+            setIdOfMenu(idOfProductToEdited - 1);
+            editRef.current.focus();
         }
     };
 
@@ -71,7 +82,11 @@ export default function OrderPage() {
         setIsCollapsed,
         currentTabSelected,
         setCurrentTabSelected,
+        idOfMenu,
         menu,
+        setMenu,
+        idOfMenu,
+        setIdOfMenu,
         handleAdd,
         handleDelete,
         resetMenu,

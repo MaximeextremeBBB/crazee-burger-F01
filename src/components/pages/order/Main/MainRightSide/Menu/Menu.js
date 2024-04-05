@@ -44,7 +44,7 @@ export default function Menu() {
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={() => handleDelete(id)}
-                        onEdit={() => handleEdit()}
+                        onEdit={() => handleEdit(id, title, imageSource, price)}
                     />
                 );
             })}

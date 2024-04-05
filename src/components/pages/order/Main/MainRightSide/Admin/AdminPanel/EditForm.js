@@ -9,19 +9,25 @@ import { EMPTY_PRODUCT } from "./AddForm";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { tabsConfig } from "../tabsConfig";
+import { getInputTextsConfigEdit } from "./inputTextConfigEdit";
 
 export default function EditForm() {
     // state
     const {
-        newProduct,
+        menu,
+        idOfMenu,
+        setMenu,
         isEdited,
         isCardSelected,
+        newProduct,
         setIsEdited,
         setNewProduct,
+        handleEdit,
         editRef,
     } = useContext(OrderContext);
 
-    console.log(editRef);
+    console.log(menu[idOfMenu].title);
+    console.log(idOfMenu);
     // const tabs = tabsConfig;
     // console.log(tabs[0].index);
 
@@ -29,7 +35,8 @@ export default function EditForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setNewProduct({ ...newProduct, [name]: value });
+        // setNewProduct({ ...newProduct, [name]: value });
+        event.target.value = 25;
     };
 
     const test2 = () => {
@@ -37,35 +44,38 @@ export default function EditForm() {
         editRef.current.focus();
     };
 
-    const inputTexts = getInputTextsConfig(newProduct);
+    // const inputTexts = getInputTextsConfig(newProduct);
+    const inputTexts = getInputTextsConfigEdit(menu, idOfMenu);
 
     // affichage
     return isCardSelected ? (
         <EditFormStyled>
             <ImagePreview
-                imageSource={newProduct.imageSource}
-                title={newProduct.title}
+                imageSource={menu[idOfMenu].imageSource}
+                title={menu[idOfMenu].title}
             />
             <div className="input-fields">
+                {/* <input
+                    type="text"
+                    value={menu[idOfMenu].title}
+                    // onChange={(event) => setMenu(event.target.value)}
+                /> */}
                 {inputTexts.map((input) => (
                     // <TextInput
-                    //     // {...input}
-                    //     // ref={editRef}
                     //     name={input.name}
                     //     value={input.value}
                     //     placeholder={input.placeholder}
                     //     key={input.id}
                     //     Icon={input.Icon}
                     //     version="minimalist"
-                    //     version="minimalist"
                     //     onChange={handleChange}
-
                     // />
                     <TextInput
                         {...input}
                         ref={editRef}
                         key={input.id}
                         onChange={handleChange}
+                        // onChange={(event) => setMenu(event.target.value)}
                         version="minimalist"
                     />
                 ))}
