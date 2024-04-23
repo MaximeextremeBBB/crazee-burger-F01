@@ -1,32 +1,26 @@
-import { createContext } from "react";
+import { createContext } from "react"
 
 export default createContext({
-    isModeAdmin: false,
-    setIsModeAdmin: () => {},
+  isModeAdmin: false,
+  setIsModeAdmin: () => {},
 
-    isCollapsed: false,
-    setIsCollapsed: () => {},
+  isCollapsed: false,
+  setIsCollapsed: () => {},
 
-    currentTabSelected: false,
-    setCurrentTabSelected: () => {},
+  currentTabSelected: false,
+  setCurrentTabSelected: () => {},
 
-    idOfMenu: () => {},
-    menu: [],
-    setMenu: () => {},
+  menu: [],
+  handleAdd: () => {},
+  handleDelete: () => {},
+  handleEdit: () => {},
+  resetMenu: () => {},
 
-    handleAdd: () => {},
-    handleDelete: () => {},
-    resetMenu: () => {},
+  newProduct: {},
+  setNewProduct: () => {},
 
-    newProduct: [],
-    setNewProduct: () => {},
+  productSelected: {},
+  setProductSelected: () => {},
 
-    isEdited: true,
-    setIsEdited: () => {},
-    handleEdit: () => {},
-
-    isCardSelected: true,
-    setIsCardSelected: () => {},
-
-    editRef: {},
-});
+  titleEditRef: {},
+})
