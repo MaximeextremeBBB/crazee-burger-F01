@@ -22,11 +22,6 @@ export default function Main() {
 
         setBasketList(basketListUpdated);
 
-        // const newProductToAdd = {
-        //     ...newProduct,
-        //     id: crypto.randomUUID(),
-        // };
-
         console.log(basketList);
     };
     const mainContextValue = {
