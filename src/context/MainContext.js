@@ -6,4 +6,5 @@ export default createContext({
     setBasketList: () => {},
     newProductBasket: {},
     setNewProductBasket: () => {},
+    handleAddBasket: () => {},
 });

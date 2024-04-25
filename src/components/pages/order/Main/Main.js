@@ -7,16 +7,27 @@ import { EMPTY_PRODUCT } from "../../../../enums/product";
 import { useState } from "react";
 
 export default function Main() {
-    const [basketList, setBasketList] = useState(EMPTY_PRODUCT);
+    const [basketList, setBasketList] = useState([]);
     const [newProductBasket, setNewProductBasket] = useState(EMPTY_PRODUCT);
 
-    const handleAddBasket = (newProduct) => {
-        // // 1. copie du tableau
-        // const menuCopy = deepClone(menu);
-        // // 2. manip de la copie du tableau
-        // const menuUpdated = [newProduct, ...menuCopy];
-        // // 3. update du state
-        // setMenu(menuUpdated);
+    const handleAddBasket = (newProductBasket) => {
+        console.log(basketList);
+        const basketListCopy = [...basketList];
+        console.log(basketList);
+
+        // 2. manip de la copie du tableau
+        const basketListUpdated = [newProductBasket, ...basketListCopy];
+
+        // 3. update du state
+
+        setBasketList(basketListUpdated);
+
+        // const newProductToAdd = {
+        //     ...newProduct,
+        //     id: crypto.randomUUID(),
+        // };
+
+        console.log(basketList);
     };
     const mainContextValue = {
         handleAddBasket,
@@ -24,6 +35,7 @@ export default function Main() {
         setBasketList,
         newProductBasket,
         setNewProductBasket,
+        handleAddBasket,
     };
 
     return (

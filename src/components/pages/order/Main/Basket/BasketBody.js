@@ -11,32 +11,6 @@ export default function BasketBody() {
     // const basketList = [];
     // console.log(basketList);
 
-    // const basketListCopy = [
-    //     {
-    //         ...basketList,
-    //     },
-    // ];
-
-    // console.log(basketListCopy);
-    // 1. copie du tableau
-    // const menuCopy = deepClone(menu);
-
-    // 2. manip de la copie du tableau
-    // const basketListUpdated = [newProductBasket, ...basketListCopy];
-
-    // const basketListUpdated = [...basketListCopy];
-
-    // 3. update du state
-
-    // setBasketList(basketListUpdated);
-
-    // const newProductToAdd = {
-    //     ...newProduct,
-    //     id: crypto.randomUUID(),
-    // };
-
-    // console.log(basketList);
-
     return (
         <BasketBodyStyled>
             {newProductBasket.title === "" ? (

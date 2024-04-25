@@ -25,7 +25,8 @@ export default function Menu() {
         titleEditRef,
         newProduct,
     } = useContext(OrderContext);
-    const { newProductBasket, setNewProductBasket } = useContext(MainContext);
+    const { newProductBasket, setNewProductBasket, handleAddBasket } =
+        useContext(MainContext);
     // state
 
     // comportements (gestionnaires d'événement ou "event handlers")
@@ -42,6 +43,7 @@ export default function Menu() {
     };
 
     const addToBasket = async (
+        id,
         title,
         imageSource,
         price,
@@ -50,10 +52,12 @@ export default function Menu() {
     ) => {
         setNewProductBasket({
             ...newProductBasket,
+            id: crypto.randomUUID(),
             title: title,
             imageSource: imageSource,
             price: price,
         });
+        handleAddBasket(newProductBasket);
 
         // console.log(newProductBasket.title);
     };
@@ -88,6 +92,7 @@ export default function Menu() {
                         onClick={() => handleClick(id)}
                         addToBasket={() =>
                             addToBasket(
+                                id,
                                 title,
                                 imageSource,
                                 price,
