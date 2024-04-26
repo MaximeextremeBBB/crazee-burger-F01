@@ -53,6 +53,7 @@ export default function Menu() {
         setNewProductBasket({
             ...newProductBasket,
             id: crypto.randomUUID(),
+            // id: id,
             title: title,
             imageSource: imageSource,
             price: price,

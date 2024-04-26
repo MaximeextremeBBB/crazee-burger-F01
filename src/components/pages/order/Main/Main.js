@@ -10,9 +10,8 @@ export default function Main() {
     const [basketList, setBasketList] = useState([]);
     const [newProductBasket, setNewProductBasket] = useState(EMPTY_PRODUCT);
     const newPrice = newProductBasket.price;
+    const idToRemove = newProductBasket.id;
     const [totalPrice, setTotalPrice] = useState(0);
-
-    // setTotalPrice(totalPrice + newPrice);
 
     const handleAddBasket = (newProductBasket) => {
         const basketListCopy = [...basketList];
@@ -24,7 +23,18 @@ export default function Main() {
 
         setBasketList(basketListUpdated);
         setTotalPrice(totalPrice + newPrice);
-        console.log(totalPrice);
+    };
+
+    const handleRemoveItemFromBasket = (idToRemove, event) => {
+        event.preventDefault();
+        const basketListCopy = [...basketList];
+        const updatedCartItems = basketListCopy.filter(
+            (basketList) => basketList.id !== idToRemove
+        );
+        console.log(updatedCartItems);
+        setBasketList(updatedCartItems);
+
+        setTotalPrice(totalPrice - newPrice);
     };
 
     const mainContextValue = {
@@ -35,6 +45,7 @@ export default function Main() {
         setNewProductBasket,
         handleAddBasket,
         totalPrice,
+        handleRemoveItemFromBasket,
     };
 
     return (

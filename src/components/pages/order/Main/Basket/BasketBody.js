@@ -3,13 +3,18 @@ import styled from "styled-components/macro";
 import { theme } from "../../../../../theme";
 import { useContext } from "react";
 import MainContext from "../../../../../context/MainContext";
+import { TiDelete } from "react-icons/ti";
 
 export default function BasketBody() {
-    const { newProductBasket, setNewProductBasket, basketList } =
+    const { newProductBasket, basketList, handleRemoveItemFromBasket } =
         useContext(MainContext);
-    // console.log(newProductBasket);
-    // console.log(basketList);
-    // console.log(basketList[0].title);
+
+    const handleBasketDelete = (event, idProductToDelete) => {
+        event.stopPropagation();
+        handleRemoveItemFromBasket(idProductToDelete, event);
+        // idProductToDelete === productSelected.id &&
+        //     setProductSelected(EMPTY_PRODUCT);
+    };
 
     return (
         <BasketBodyStyled>
@@ -33,6 +38,17 @@ export default function BasketBody() {
                             <div className="price">{price}</div>
                         </div>
                         <div className="quantity">x 1</div>
+                        <div>
+                            <button
+                                className="delete-button"
+                                aria-label="delete-button"
+                                onClick={(event) =>
+                                    handleBasketDelete(event, id)
+                                }
+                            >
+                                <TiDelete className="icon" />
+                            </button>
+                        </div>
                     </div>
                 );
             })}

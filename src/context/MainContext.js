@@ -8,4 +8,5 @@ export default createContext({
     setNewProductBasket: () => {},
     handleAddBasket: () => {},
     totalPrice: 0,
+    handleRemoveItemFromBasket: () => {},
 });
