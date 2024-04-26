@@ -9,6 +9,10 @@ import { useState } from "react";
 export default function Main() {
     const [basketList, setBasketList] = useState([]);
     const [newProductBasket, setNewProductBasket] = useState(EMPTY_PRODUCT);
+    const newPrice = newProductBasket.price;
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    // setTotalPrice(totalPrice + newPrice);
 
     const handleAddBasket = (newProductBasket) => {
         console.log(basketList);
@@ -21,9 +25,12 @@ export default function Main() {
         // 3. update du state
 
         setBasketList(basketListUpdated);
+        setTotalPrice(totalPrice + newPrice);
+        console.log(totalPrice);
 
         console.log(basketList);
     };
+
     const mainContextValue = {
         handleAddBasket,
         basketList,
@@ -31,6 +38,7 @@ export default function Main() {
         newProductBasket,
         setNewProductBasket,
         handleAddBasket,
+        totalPrice,
     };
 
     return (

@@ -7,4 +7,5 @@ export default createContext({
     newProductBasket: {},
     setNewProductBasket: () => {},
     handleAddBasket: () => {},
+    totalPrice: 0,
 });
