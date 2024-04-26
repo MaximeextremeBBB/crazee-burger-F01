@@ -18,6 +18,7 @@ export default function BasketBody() {
             ) : (
                 ""
             )}
+
             {basketList.map(({ id, title, imageSource, price }) => {
                 return (
                     <div key={id} className="basket-content">
@@ -35,8 +36,6 @@ export default function BasketBody() {
                     </div>
                 );
             })}
-            {/* )
-            }  */}
         </BasketBodyStyled>
     );
 }
@@ -45,7 +44,6 @@ const BasketBodyStyled = styled.div`
     flex: 1;
     background: ${theme.colors.background_white};
     box-shadow: ${theme.shadows.basket};
-    overflow-y: scroll;
 
     .empty-message {
         display: flex;

@@ -15,9 +15,7 @@ export default function Main() {
     // setTotalPrice(totalPrice + newPrice);
 
     const handleAddBasket = (newProductBasket) => {
-        console.log(basketList);
         const basketListCopy = [...basketList];
-        console.log(basketList);
 
         // 2. manip de la copie du tableau
         const basketListUpdated = [newProductBasket, ...basketListCopy];
@@ -27,8 +25,6 @@ export default function Main() {
         setBasketList(basketListUpdated);
         setTotalPrice(totalPrice + newPrice);
         console.log(totalPrice);
-
-        console.log(basketList);
     };
 
     const mainContextValue = {
