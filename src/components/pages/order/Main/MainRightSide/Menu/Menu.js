@@ -25,8 +25,8 @@ export default function Menu() {
         titleEditRef,
         newProduct,
     } = useContext(OrderContext);
-    const { newProductBasket, setNewProductBasket, handleAddBasket } =
-        useContext(MainContext);
+
+    const { basketList, handleAddBasket } = useContext(MainContext);
     // state
 
     // comportements (gestionnaires d'événement ou "event handlers")
@@ -41,24 +41,11 @@ export default function Menu() {
         await setProductSelected(productClickedOn);
         titleEditRef.current.focus();
     };
+    // console.log("nPBIn MENU BeforeFunction : ", newProductBasket.title);
 
-    const addToBasket = async (
-        id,
-        title,
-        imageSource,
-        price,
-        newProductBasket,
-        setNewProductBasket
-    ) => {
-        setNewProductBasket({
-            ...newProductBasket,
-            id: crypto.randomUUID(),
-            // id: id,
-            title: title,
-            imageSource: imageSource,
-            price: price,
-        });
-        handleAddBasket(newProductBasket);
+    const addToBasket = (idOfProduct) => {
+        const productToAdd = menu.find((basket) => basket.id === idOfProduct);
+        handleAddBasket(productToAdd);
 
         // console.log(newProductBasket.title);
     };
@@ -91,16 +78,7 @@ export default function Menu() {
                         hasDeleteButton={isModeAdmin}
                         onDelete={(event) => handleCardDelete(event, id)}
                         onClick={() => handleClick(id)}
-                        addToBasket={() =>
-                            addToBasket(
-                                id,
-                                title,
-                                imageSource,
-                                price,
-                                newProductBasket,
-                                setNewProductBasket
-                            )
-                        }
+                        addToBasket={() => addToBasket(id)}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(
                             id,

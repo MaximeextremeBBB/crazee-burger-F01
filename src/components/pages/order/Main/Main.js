@@ -5,36 +5,43 @@ import Basket from "./Basket/Basket";
 import MainContext from "../../../../context/MainContext";
 import { EMPTY_PRODUCT } from "../../../../enums/product";
 import { useState } from "react";
+import { fakeBasket } from "../../../../fakeData/fakeBasket";
 
 export default function Main() {
     const [basketList, setBasketList] = useState([]);
-    const [newProductBasket, setNewProductBasket] = useState(EMPTY_PRODUCT);
-    const newPrice = newProductBasket.price;
-    const idToRemove = newProductBasket.id;
+    const [newProductBasket, setNewProductBasket] = useState(fakeBasket.EMPTY);
     const [totalPrice, setTotalPrice] = useState(0);
+    // console.log(basketList);
+    // console.log("nPBIn MAIN BeforeFuction : ", newProductBasket.title);
 
-    const handleAddBasket = (newProductBasket) => {
+    const handleAddBasket = (newProductBasketInMenu) => {
         const basketListCopy = [...basketList];
+        console.log("nPBIn MAIN InFuction : ", newProductBasketInMenu.title);
+        // console.log("nPBIn MAIN InFuction : ", newProductBasket.title);
 
         // 2. manip de la copie du tableau
-        const basketListUpdated = [newProductBasket, ...basketListCopy];
+        const basketListUpdated = [newProductBasketInMenu, ...basketListCopy];
 
         // 3. update du state
 
         setBasketList(basketListUpdated);
-        setTotalPrice(totalPrice + newPrice);
+        setTotalPrice(totalPrice + newProductBasketInMenu.price);
     };
 
     const handleRemoveItemFromBasket = (idToRemove, event) => {
         event.preventDefault();
         const basketListCopy = [...basketList];
+        const productToRemovePrice = basketList.find(
+            (basket) => (basket.id = idToRemove)
+        );
+        console.log("productToRemovePrice : ", productToRemovePrice);
         const updatedCartItems = basketListCopy.filter(
             (basketList) => basketList.id !== idToRemove
         );
-        console.log(updatedCartItems);
+        console.log("updateCardItem : ", updatedCartItems);
         setBasketList(updatedCartItems);
 
-        setTotalPrice(totalPrice - newPrice);
+        setTotalPrice(totalPrice - productToRemovePrice.price);
     };
 
     const mainContextValue = {
@@ -43,7 +50,6 @@ export default function Main() {
         setBasketList,
         newProductBasket,
         setNewProductBasket,
-        handleAddBasket,
         totalPrice,
         handleRemoveItemFromBasket,
     };

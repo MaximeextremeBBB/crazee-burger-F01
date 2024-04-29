@@ -10,9 +10,6 @@ export default function Basket() {
     const { newProductBasket, totalPrice } = useContext(MainContext);
     const newPrice = newProductBasket.price;
 
-    console.log(totalPrice);
-
-    console.log();
     return (
         <BasketStyled>
             <Total amountToPay={formatPrice(totalPrice)} />
