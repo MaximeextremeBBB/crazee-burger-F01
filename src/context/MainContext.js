@@ -1,0 +1,12 @@
+import { createContext } from "react";
+
+export default createContext({
+    handleAddBasket: () => {},
+    basketList: [],
+    setBasketList: () => {},
+    newProductBasket: {},
+    setNewProductBasket: () => {},
+    handleAddBasket: () => {},
+    totalPrice: 0,
+    handleRemoveItemFromBasket: () => {},
+});
