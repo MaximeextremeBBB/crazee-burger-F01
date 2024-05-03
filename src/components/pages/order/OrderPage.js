@@ -16,6 +16,7 @@ export default function OrderPage() {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
     const titleEditRef = useRef();
+    const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT;
     const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu();
     const {
         basket,
@@ -47,6 +48,7 @@ export default function OrderPage() {
         handleAddToBasket,
         handleDeleteBasketProduct,
         handleEditBasketAndMenu,
+        hasAlreadyBeenClicked,
     };
 
     //affichage
