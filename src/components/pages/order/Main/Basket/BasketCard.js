@@ -171,7 +171,8 @@ const BasketCardStyled = styled.div`
             }
         }
     }
-    ${({ isSelected }) => isSelected && selectedStyle}
+    ${({ isSelected, isModeAdmin }) =>
+        isSelected && isModeAdmin && selectedStyle}
 `;
 
 const selectedStyle = css`
