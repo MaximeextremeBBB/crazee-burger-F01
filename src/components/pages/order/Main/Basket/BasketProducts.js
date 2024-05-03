@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 import BasketCard from "./BasketCard";
+import { find } from "../../../../../utils/array";
 
 export default function BasketProducts({
     basket,
     isModeAdmin,
+    setProductSelected,
+    hasAlreadyBeenClicked,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
     handleDeleteBasketProduct,
     handleEditBasketAndMenu,
 }) {
@@ -13,8 +19,20 @@ export default function BasketProducts({
         handleDeleteBasketProduct(id);
     };
 
-    const handleOnEdit = (id) => {
-        handleEditBasketAndMenu(id);
+    // const handleOnEdit = (productBeingUpdated) => {
+    //     console.log(productBeingUpdated);
+    //     handleEditBasketAndMenu(productSelected);
+    // };
+
+    const handleClick = async (idProductClicked) => {
+        if (!isModeAdmin) return;
+
+        await setIsCollapsed(false);
+        await setCurrentTabSelected("edit");
+        const productClickedOn = find(idProductClicked, basket);
+
+        await setProductSelected(productClickedOn);
+        titleEditRef.current.focus();
     };
 
     return (
@@ -29,7 +47,7 @@ export default function BasketProducts({
                                 : IMAGE_COMING_SOON
                         }
                         onDelete={() => handleOnDelete(basketProduct.id)}
-                        onClick={() => handleOnEdit(basketProduct.id)}
+                        onClick={() => handleClick(basketProduct.id)}
                         isModeAdmin={isModeAdmin}
                     />
                 </div>

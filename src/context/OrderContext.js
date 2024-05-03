@@ -29,4 +29,6 @@ export default createContext({
     handleAddToBasket: () => {},
     handleDeleteBasketProduct: () => {},
     handleEditBasketAndMenu: () => {},
+
+    hasAlreadyBeenClicked: true,
 });

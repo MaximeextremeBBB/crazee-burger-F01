@@ -29,9 +29,6 @@ export default function EditForm() {
         setProductSelected(productBeingUpdated); // cette ligne update le formulaire
         handleEdit(productBeingUpdated, event); // cette ligne update le menu
 
-        console.log(productBeingUpdated);
-        console.log(isProductAlreadyInBasket);
-
         if (isProductAlreadyInBasket) {
             handleEditBasketAndMenu(productBeingUpdated);
         }
