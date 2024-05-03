@@ -1,12 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 import BasketCard from "./BasketCard";
 import { find } from "../../../../../utils/array";
+import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper";
+import { theme } from "../../../../../theme";
 
 export default function BasketProducts({
     basket,
     isModeAdmin,
+    productSelected,
     setProductSelected,
     hasAlreadyBeenClicked,
     setIsCollapsed,
@@ -49,6 +52,10 @@ export default function BasketProducts({
                         onDelete={() => handleOnDelete(basketProduct.id)}
                         onClick={() => handleClick(basketProduct.id)}
                         isModeAdmin={isModeAdmin}
+                        isSelected={checkIfProductIsClicked(
+                            basketProduct.id,
+                            productSelected.id
+                        )}
                     />
                 </div>
             ))}
@@ -77,3 +84,5 @@ const BasketProductsStyled = styled.div`
         }
     }
 `;
+
+

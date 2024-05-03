@@ -24,13 +24,8 @@ export default function Basket() {
 
     const sumToPay = basket.reduce((total, basketProduct) => {
         if (!isNaN(basketProduct.price)) {
-            console.log("totaldebut : ", total);
             total += basketProduct.price * basketProduct.quantity;
-            console.log(
-                "product : ",
-                basketProduct.price * basketProduct.quantity
-            );
-            console.log("total : ", total);
+
             return total;
         }
         return total;

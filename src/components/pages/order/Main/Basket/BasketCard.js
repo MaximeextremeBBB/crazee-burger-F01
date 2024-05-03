@@ -13,12 +13,14 @@ export default function BasketCard({
     isModeAdmin,
     onDelete,
     onClick,
+    isSelected,
 }) {
     return (
         <BasketCardStyled
             className={className}
             isModeAdmin={isModeAdmin}
             onClick={onClick}
+            isSelected={isSelected}
         >
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
@@ -169,4 +171,9 @@ const BasketCardStyled = styled.div`
             }
         }
     }
+    ${({ isSelected }) => isSelected && selectedStyle}
+`;
+
+const selectedStyle = css`
+    background: ${theme.colors.primary};
 `;
