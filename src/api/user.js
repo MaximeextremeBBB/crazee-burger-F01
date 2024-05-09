@@ -5,11 +5,13 @@ import { fakeMenu } from "../fakeData/fakeMenu";
 export const getUser = async (idUser) => {
     const cachette = doc(db, "users", idUser);
     const docSnapshot = await getDoc(cachette);
+    // console.log("docSnapshot : ", docSnapshot);
     // console.log("docSnapshot.exists() : ", docSnapshot.exists());
+
     if (docSnapshot.exists()) {
-        const userReceived = docSnapshot.data();
-        return userReceived;
-        // console.log("userReceived : ", userReceived);
+        const { menu } = await docSnapshot.data();
+        console.log("menu : ", menu);
+        return menu;
     }
 };
 
