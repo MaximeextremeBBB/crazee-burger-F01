@@ -1,67 +1,95 @@
-import React from "react"
-import { useContext } from "react"
-import styled from "styled-components"
-import { IMAGE_COMING_SOON } from "../../../../../enums/product"
-import BasketCard from "./BasketCard"
-import OrderContext from "../../../../../context/OrderContext"
-import { findObjectById } from "../../../../../utils/array"
-import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper"
+import React from "react";
+import { useContext } from "react";
+import styled from "styled-components";
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import BasketCard from "./BasketCard";
+import OrderContext from "../../../../../context/OrderContext";
+import { findObjectById } from "../../../../../utils/array";
+import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function BasketProducts() {
-  const {
-    basket,
-    isModeAdmin,
-    handleDeleteBasketProduct,
-    menu,
-    handleProductSelected,
-    productSelected,
-  } = useContext(OrderContext)
+    const {
+        basket,
+        isModeAdmin,
+        handleDeleteBasketProduct,
+        menu,
+        handleProductSelected,
+        productSelected,
+    } = useContext(OrderContext);
 
-  const handleOnDelete = (event, id) => {
-    event.stopPropagation()
-    handleDeleteBasketProduct(id)
-  }
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation();
+        handleDeleteBasketProduct(id);
+    };
 
-  return (
-    <BasketProductsStyled>
-      {basket.map((basketProduct) => {
-        const menuProduct = findObjectById(basketProduct.id, menu)
-        return (
-          <div className="basket-card" key={basketProduct.id}>
-            <BasketCard
-              {...menuProduct}
-              imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
-              quantity={basketProduct.quantity}
-              onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-              isClickable={isModeAdmin}
-              onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
-              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-            />
-          </div>
-        )
-      })}
-    </BasketProductsStyled>
-  )
+    return (
+        <BasketProductsStyled>
+            <TransitionGroup>
+                {basket.map((basketProduct) => {
+                    const menuProduct = findObjectById(basketProduct.id, menu);
+                    return (
+                        <CSSTransition
+                            classNames={"abricot"}
+                            key={basketProduct.id}
+                            timeout={{ enter: 5000, exit: 5000 }}
+                        >
+                            <div className="basket-card">
+                                <BasketCard
+                                    {...menuProduct}
+                                    imageSource={
+                                        menuProduct.imageSource
+                                            ? menuProduct.imageSource
+                                            : IMAGE_COMING_SOON
+                                    }
+                                    quantity={basketProduct.quantity}
+                                    onDelete={(event) =>
+                                        handleOnDelete(event, basketProduct.id)
+                                    }
+                                    isClickable={isModeAdmin}
+                                    onClick={
+                                        isModeAdmin
+                                            ? () =>
+                                                  handleProductSelected(
+                                                      basketProduct.id
+                                                  )
+                                            : null
+                                    }
+                                    isSelected={checkIfProductIsClicked(
+                                        basketProduct.id,
+                                        productSelected.id
+                                    )}
+                                />
+                            </div>
+                        </CSSTransition>
+                    );
+                })}
+            </TransitionGroup>
+        </BasketProductsStyled>
+    );
 }
 
 const BasketProductsStyled = styled.div`
-  /* border: 1px solid red; */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
+    /* border: 1px solid red; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 
-  .basket-card {
-    /* border: 1px solid blue; */
-    margin: 10px 16px;
-    height: 86px;
-    box-sizing: border-box;
-    :first-child {
-      margin-top: 20px;
-      /* border: 1px solid red; */
+    .abricot {
     }
-    :last-child {
-      margin-bottom: 20px;
+
+    .basket-card {
+        /* border: 1px solid blue; */
+        margin: 10px 16px;
+        height: 86px;
+        box-sizing: border-box;
+        :first-child {
+            margin-top: 20px;
+            /* border: 1px solid red; */
+        }
+        :last-child {
+            margin-bottom: 20px;
+        }
     }
-  }
-`
+`;

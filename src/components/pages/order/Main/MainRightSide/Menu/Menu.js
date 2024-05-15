@@ -55,11 +55,11 @@ export default function Menu() {
     // };
     // const tab = activateUser(username);
 
-    useEffect(async () => {
-        const menuReceived = await getUser(username);
-        console.log("menuReceived : ", menuReceived);
-        // setMenu(menuReceived);
-    }, []);
+    // useEffect(async () => {
+    //     const menuReceived = await getUser(username);
+    //     console.log("menuReceived : ", menuReceived);
+    //     // setMenu(menuReceived);
+    // }, []);
 
     // affichage
     // if (isEmpty(getUser(username))) {
