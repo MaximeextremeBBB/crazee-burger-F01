@@ -25,11 +25,12 @@ export default function BasketProducts() {
 
     return (
         <BasketProductsStyled>
-            <TransitionGroup>
+            <TransitionGroup component={"h1"} className={transition - group}>
                 {basket.map((basketProduct) => {
                     const menuProduct = findObjectById(basketProduct.id, menu);
                     return (
                         <CSSTransition
+                            appear={true}
                             classNames={"abricot"}
                             key={basketProduct.id}
                             timeout={{ enter: 5000, exit: 5000 }}
@@ -59,6 +60,7 @@ export default function BasketProducts() {
                                         basketProduct.id,
                                         productSelected.id
                                     )}
+                                    className={pomme}
                                 />
                             </div>
                         </CSSTransition>
@@ -76,7 +78,24 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     overflow-y: scroll;
 
-    .abricot {
+    .abricot-enter {
+        background: green;
+    }
+    .abricot-enter-active {
+        pomme {
+            background: blue;
+            transition: 2s;
+        }
+    }
+    .abricot-enter-done {
+        pomme {
+            background: pink;
+            transition: 2s;
+        }
+    }
+    .abricot-exit-active {
+    }
+    .abricot-exit-done {
     }
 
     .basket-card {
