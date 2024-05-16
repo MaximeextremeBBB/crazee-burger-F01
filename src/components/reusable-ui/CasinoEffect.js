@@ -16,14 +16,29 @@ export default function CasinoEffect({ count, className }) {
 
 const CasinoEffectStyled = styled.div`
     border: 1px solid red;
-    count-animated {
+    position: relative;
+    overflow-y: hidden;
+
+    span {
+        display: inline-block;
     }
-    count-animated-enter-active {
+    .count-animated-enter {
+        transform: translateY(100%);
     }
-    count-animated-enter-done {
+    .count-animated-enter-active {
+        transform: translateY(0%);
+        transition: 300ms;
     }
-    count-animated-exit-active {
+    .count-animated-enter-done {
     }
-    count-animated-exit-done {
+    .count-animated-exit-active {
+        transform: translateY(0%);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .count-animated-exit-done {
+        transform: translateY(-100%);
+        transition: 300ms;
     }
 `;
