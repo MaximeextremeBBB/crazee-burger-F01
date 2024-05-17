@@ -25,7 +25,7 @@ export default function BasketProducts() {
 
     return (
         <BasketProductsStyled>
-            <TransitionGroup component={"h1"} className={transition - group}>
+            <TransitionGroup component={"h1"} className={"transition-group"}>
                 {basket.map((basketProduct) => {
                     const menuProduct = findObjectById(basketProduct.id, menu);
                     return (
@@ -60,7 +60,7 @@ export default function BasketProducts() {
                                         basketProduct.id,
                                         productSelected.id
                                     )}
-                                    className={pomme}
+                                    className={"pomme"}
                                 />
                             </div>
                         </CSSTransition>
