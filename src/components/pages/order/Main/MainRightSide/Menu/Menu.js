@@ -15,6 +15,7 @@ import { isEmpty } from "../../../../../../utils/array";
 import { useParams } from "react-router-dom";
 import { getUser } from "../../../../../../api/user";
 import { useEffect } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function Menu() {
     // export const Menu = async () => {
@@ -68,31 +69,42 @@ export default function Menu() {
     // }
 
     return (
-        <MenuStyled className="menu">
+        <TransitionGroup component={MenuStyled} className={"transition-group"}>
+            {/* <MenuStyled className="menu"> */}
             {menu.map(({ id, title, imageSource, price }) => {
                 return (
-                    <Card
+                    <CSSTransition
+                        appear={true}
+                        classNames={"menu-animated"}
                         key={id}
-                        title={title}
-                        imageSource={
-                            imageSource ? imageSource : IMAGE_COMING_SOON
-                        }
-                        leftDescription={formatPrice(price)}
-                        hasDeleteButton={isModeAdmin}
-                        onDelete={(event) => handleCardDelete(event, id)}
-                        onClick={
-                            isModeAdmin ? () => handleProductSelected(id) : null
-                        }
-                        isHoverable={isModeAdmin}
-                        isSelected={checkIfProductIsClicked(
-                            id,
-                            productSelected.id
-                        )}
-                        onAdd={(event) => handleAddButton(event, id)}
-                    />
+                        timeout={150}
+                    >
+                        <Card
+                            key={id}
+                            title={title}
+                            imageSource={
+                                imageSource ? imageSource : IMAGE_COMING_SOON
+                            }
+                            leftDescription={formatPrice(price)}
+                            hasDeleteButton={isModeAdmin}
+                            onDelete={(event) => handleCardDelete(event, id)}
+                            onClick={
+                                isModeAdmin
+                                    ? () => handleProductSelected(id)
+                                    : null
+                            }
+                            isHoverable={isModeAdmin}
+                            isSelected={checkIfProductIsClicked(
+                                id,
+                                productSelected.id
+                            )}
+                            onAdd={(event) => handleAddButton(event, id)}
+                        />
+                    </CSSTransition>
                 );
             })}
-        </MenuStyled>
+            {/* </MenuStyled> */}
+        </TransitionGroup>
     );
 }
 
@@ -106,4 +118,33 @@ const MenuStyled = styled.div`
     justify-items: center;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
     overflow-y: scroll;
+
+    /* .menu-animated-appear {
+        opacity: 0%;
+    }
+    .menu-animated-appear-active {
+        opacity: 100%;
+        transition: 300ms;
+    } */
+
+    .menu-animated-enter {
+        transform: translateX(-100%);
+    }
+    .menu-animated-enter-active {
+        transform: translateX(0%);
+        transition: 75ms;
+    }
+    .menu-animated-enter-done {
+    }
+    .menu-animated-exit {
+        opacity: 100%;
+        transition: 75ms;
+    }
+
+    .menu-animated-exit-active {
+        opacity: 0%;
+        transition: 75ms;
+    }
+    .menu-animated-exit-done {
+    }
 `;
