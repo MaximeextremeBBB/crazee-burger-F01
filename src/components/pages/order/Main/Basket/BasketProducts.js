@@ -31,7 +31,7 @@ export default function BasketProducts() {
                     return (
                         <CSSTransition
                             appear={true}
-                            classNames={"abricot"}
+                            classNames={"basket-cad-animated"}
                             key={basketProduct.id}
                             timeout={{ enter: 500, exit: 500 }}
                         >
@@ -83,41 +83,41 @@ const BasketProductsStyled = styled.div`
             transform: translateX(100%);
         }
     }
-    .abricot-appear-active {
+    .basket-cad-animated-appear-active {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
 
-    .abricot-enter {
+    .basket-cad-animated-enter {
         .pomme {
             transform: translateX(100%);
         }
     }
-    .abricot-enter-active {
+    .basket-cad-animated-enter-active {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
-    .abricot-enter-done {
+    .basket-cad-animated-enter-done {
         .pomme {
         }
     }
-    .abricot-exit {
+    .basket-cad-animated-exit {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
-    .abricot-exit-active {
+    .basket-cad-animated-exit-active {
         .pomme {
             transform: translateX(-100%);
             transition: 300ms;
         }
     }
-    .abricot-exit-done {
+    .basket-cad-animated-exit-done {
         .pomme {
         }
     }
