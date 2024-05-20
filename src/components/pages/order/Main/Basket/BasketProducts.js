@@ -33,7 +33,7 @@ export default function BasketProducts() {
                             appear={true}
                             classNames={"abricot"}
                             key={basketProduct.id}
-                            timeout={{ enter: 5000, exit: 5000 }}
+                            timeout={{ enter: 500, exit: 500 }}
                         >
                             <div className="basket-card">
                                 <BasketCard
@@ -78,24 +78,48 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     overflow-y: scroll;
 
+    .basket-cad-animated-appear {
+        .pomme {
+            transform: translateX(100%);
+        }
+    }
+    .abricot-appear-active {
+        .pomme {
+            transform: translateX(0%);
+            transition: 300ms;
+        }
+    }
+
     .abricot-enter {
-        background: green;
+        .pomme {
+            transform: translateX(100%);
+        }
     }
     .abricot-enter-active {
-        pomme {
-            background: blue;
-            transition: 2s;
+        .pomme {
+            transform: translateX(0%);
+            transition: 300ms;
         }
     }
     .abricot-enter-done {
-        pomme {
-            background: pink;
-            transition: 2s;
+        .pomme {
+        }
+    }
+    .abricot-exit {
+        .pomme {
+            transform: translateX(0%);
+            transition: 300ms;
         }
     }
     .abricot-exit-active {
+        .pomme {
+            transform: translateX(-100%);
+            transition: 300ms;
+        }
     }
     .abricot-exit-done {
+        .pomme {
+        }
     }
 
     .basket-card {
