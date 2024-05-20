@@ -31,7 +31,7 @@ export default function BasketProducts() {
                     return (
                         <CSSTransition
                             appear={true}
-                            classNames={"basket-cad-animated"}
+                            classNames={"basket-card-animated"}
                             key={basketProduct.id}
                             timeout={{ enter: 500, exit: 500 }}
                         >
@@ -78,46 +78,46 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     overflow-y: scroll;
 
-    .basket-cad-animated-appear {
+    .basket-card-animated-appear {
         .pomme {
             transform: translateX(100%);
         }
     }
-    .basket-cad-animated-appear-active {
+    .basket-card-animated-appear-active {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
 
-    .basket-cad-animated-enter {
+    .basket-card-animated-enter {
         .pomme {
             transform: translateX(100%);
         }
     }
-    .basket-cad-animated-enter-active {
+    .basket-card-animated-enter-active {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
-    .basket-cad-animated-enter-done {
+    .basket-card-animated-enter-done {
         .pomme {
         }
     }
-    .basket-cad-animated-exit {
+    .basket-card-animated-exit {
         .pomme {
             transform: translateX(0%);
             transition: 300ms;
         }
     }
-    .basket-cad-animated-exit-active {
+    .basket-card-animated-exit-active {
         .pomme {
             transform: translateX(-100%);
             transition: 300ms;
         }
     }
-    .basket-cad-animated-exit-done {
+    .basket-card-animated-exit-done {
         .pomme {
         }
     }
