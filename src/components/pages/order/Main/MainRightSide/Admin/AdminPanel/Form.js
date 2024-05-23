@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
@@ -6,17 +6,34 @@ import { getInputTextsConfig, getPrice } from "./inputTextConfig";
 import { GoMegaphone } from "react-icons/go";
 import { FiPackage } from "react-icons/fi";
 import { theme } from "../../../../../../../theme";
+import { convertStringToBoolean } from "../../../../../../../assets/string";
 
 const Form = React.forwardRef(
-    ({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
+    (
+        {
+            product,
+            onSubmit,
+            onChange,
+            onFocus,
+            onBlur,
+            changeAvailable,
+            changeAds,
+            handleChangeSelect,
+            children,
+        },
+        ref
+    ) => {
         // state (vide)
-
+        console.log("changeAds : ", changeAds);
+        console.log(
+            "convertStringToBoolean(changeAds) : ",
+            convertStringToBoolean(changeAds)
+        );
+        console.log("(typeof(changeAds)) : ", typeof changeAds);
         // comportements (vide)
 
         const inputTexts = getInputTextsConfig(product);
         const priceValue = getPrice(product);
-        console.log("inputTexts : ", inputTexts);
-        console.log("inputTexts : ", inputTexts[0].Icon);
 
         // affichage
         return (
@@ -36,8 +53,6 @@ const Form = React.forwardRef(
                             onBlur={onBlur}
                             ref={ref && input.name === "title" ? ref : null}
                         />
-
-                        // {input.name === "price" ? "bonjour" : ""}
                     ))}
                     <PriceStyled>
                         <div>
@@ -63,7 +78,12 @@ const Form = React.forwardRef(
                                 <FiPackage />
                             </IconStyled>
                             <div>
-                                <select name="available" id="available">
+                                <select
+                                    name="available"
+                                    id="available"
+                                    onChange={(e) => handleChangeSelect(e)}
+                                    value={changeAvailable}
+                                >
                                     <option value="en-stock">En stock</option>
                                     <option value="en-rupture">
                                         En rupture
@@ -76,7 +96,12 @@ const Form = React.forwardRef(
                                 <GoMegaphone />
                             </IconStyled>
                             <div>
-                                <select name="ads " id="ads">
+                                <select
+                                    name="ads "
+                                    id="ads"
+                                    onChange={(e) => handleChangeSelect(e)}
+                                    value={changeAds}
+                                >
                                     <option value="sans-pub">Sans pub</option>
                                     <option value="avec-pub">Avec pub</option>
                                 </select>
@@ -94,7 +119,6 @@ const Form = React.forwardRef(
 export default Form;
 
 const FormStyled = styled.form`
-    /* border: 2px solid black; */
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
@@ -104,7 +128,6 @@ const FormStyled = styled.form`
     grid-row-gap: 8px;
 
     .input-fields {
-        /* background: blue; */
         grid-area: 1 / 2 / -2 / 3;
 
         display: grid;
@@ -112,7 +135,6 @@ const FormStyled = styled.form`
     }
 
     .form-footer {
-        /* background: green; */
         grid-area: 4 / -2 / -1 / -1;
         display: flex;
         align-items: center;
@@ -124,7 +146,6 @@ const FormStyled = styled.form`
 const PriceStyled = styled.div`
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
-    /* display: flex; */
     align-items: center;
 `;
 
@@ -137,8 +158,6 @@ const SelectStyled = styled.div`
         border: none;
         font-size: ${theme.fonts.size.SM};
         background-color: ${theme.colors.background_white};
-
-        /* width: 100%; */
 
         &::placeholder {
             color: ${theme.colors.greyMedium};
