@@ -55,7 +55,7 @@ export default function Menu() {
 
     return (
         <TransitionGroup component={MenuStyled} className="menu">
-            {menu.map(({ id, title, imageSource, price, isAds }) => {
+            {menu.map(({ id, title, imageSource, price, isAds, ads }) => {
                 return (
                     <CSSTransition
                         classNames={"menu-animation"}
@@ -82,6 +82,7 @@ export default function Menu() {
                             )}
                             onAdd={(event) => handleAddButton(event, id)}
                             isAds={isAds}
+                            ads={ads}
                         />
                     </CSSTransition>
                 );

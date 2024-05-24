@@ -23,13 +23,40 @@ export default function EditForm() {
     const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage();
 
     // comportements (gestionnaires d'événement ou "event handlers")
-    const handleChange = (event) => {
+
+    const handleChangeSelect = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        if (value === "en-stock" || value === "en-rupture") {
+            return setChangeAvailable(value);
+        }
+        return setChangeAds(value);
+    };
+
+    const handleChange = async (event) => {
+        event.preventDefault();
         const { name, value } = event.target;
+        // const valueSelect = event.target.value;
+        // if (valueSelect === "en-stock" || valueSelect === "en-rupture") {
+        //     setChangeAvailable(valueSelect);
+        // }
+        // if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {
+        //     setChangeAds(valueSelect);
+        // }
+        console.log("changeAds : ", changeAds);
+        await handleChangeSelect(event);
+
+        console.log("changeAds : ", changeAds);
+        console.log("event.target : ", event.target);
+        console.log("productSelected : ", productSelected);
 
         const productBeingUpdated = {
             ...productSelected,
             [name]: value,
+            // ads: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
+            // isAds: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
         };
+        console.log("productBeingUpdated : ", productBeingUpdated);
 
         setProductSelected(productBeingUpdated); // cette ligne update le formulaire
         handleEdit(productBeingUpdated, username); // cette ligne update le menu
@@ -43,7 +70,6 @@ export default function EditForm() {
     const handleOnBlur = (event) => {
         const valueOnBlur = event.target.value;
         if (valueOnFocus !== valueOnBlur) {
-            console.log("ça a changé !!");
             displaySuccessMessage();
         }
     };
@@ -58,8 +84,7 @@ export default function EditForm() {
             ref={titleEditRef}
             changeAvailable={changeAvailable}
             changeAds={changeAds}
-            setChangeAvailable={setChangeAvailable}
-            setChangeAds={setChangeAds}
+            handleChangeSelect={handleChangeSelect}
         >
             {isSaved ? <SavingMessage /> : <EditInfoMessage />}
         </Form>

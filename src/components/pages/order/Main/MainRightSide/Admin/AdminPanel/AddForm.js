@@ -5,6 +5,7 @@ import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage"
 import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 import Form from "./Form";
 import SubmitButton from "./SubmitButton";
+import { useHandleChangeSelect } from "../../../../../../../hooks/useHandleChangeSelect";
 
 export default function AddForm() {
     // state
@@ -15,29 +16,30 @@ export default function AddForm() {
         setNewProduct,
         changeAvailable,
         changeAds,
-        setChangeAvailable,
         setChangeAds,
+        setChangeAvailable,
     } = useContext(OrderContext);
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
+    // const { handleChangeSelect } = useHandleChangeSelect();
 
     // comportements
-
-    const handleChangeSelect = (e) => {
-        e.preventDefault();
-        const value = e.target.value;
-        if (value === "en-stock" || value === "en-rupture") {
-            return setChangeAvailable(value);
+    const handleChangeSelect = (event) => {
+        const valueSelect = event.target.value;
+        if (valueSelect === "en-stock" || valueSelect === "en-rupture") {
+            setChangeAvailable(valueSelect);
         }
-        return setChangeAds(value);
+        if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {
+            setChangeAds(valueSelect);
+        }
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
+        // handleChangeSelect(event);
         const newProductToAdd = {
             ...newProduct,
             id: crypto.randomUUID(),
             price: replaceFrenchCommaWithDot(newProduct.price),
-            isAds: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
+            ads: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
         };
         handleAdd(newProductToAdd, username);
         setNewProduct(EMPTY_PRODUCT);

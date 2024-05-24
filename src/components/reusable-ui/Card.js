@@ -16,6 +16,7 @@ export default function Card({
     isSelected,
     onAdd,
     isAds,
+    ads,
 }) {
     // state (vide)
 
@@ -41,7 +42,7 @@ export default function Card({
                 )}
 
                 <div className="image">
-                    {isAds === "avec-pub" ? <Ribbon /> : null}
+                    {ads === "avec-pub" ? <Ribbon /> : null}
                     <img src={imageSource} alt={title} />
                 </div>
                 <div className="text-info">

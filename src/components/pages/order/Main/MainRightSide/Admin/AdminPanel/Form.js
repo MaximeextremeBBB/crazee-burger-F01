@@ -24,12 +24,7 @@ const Form = React.forwardRef(
         ref
     ) => {
         // state (vide)
-        console.log("changeAds : ", changeAds);
-        console.log(
-            "convertStringToBoolean(changeAds) : ",
-            convertStringToBoolean(changeAds)
-        );
-        console.log("(typeof(changeAds)) : ", typeof changeAds);
+
         // comportements (vide)
 
         const inputTexts = getInputTextsConfig(product);
@@ -81,7 +76,9 @@ const Form = React.forwardRef(
                                 <select
                                     name="available"
                                     id="available"
-                                    onChange={(e) => handleChangeSelect(e)}
+                                    onChange={(event) => {
+                                        handleChangeSelect(event);
+                                    }}
                                     value={changeAvailable}
                                 >
                                     <option value="en-stock">En stock</option>
@@ -97,13 +94,18 @@ const Form = React.forwardRef(
                             </IconStyled>
                             <div>
                                 <select
-                                    name="ads "
+                                    name="ads"
                                     id="ads"
-                                    onChange={(e) => handleChangeSelect(e)}
+                                    // onChange={(e) => handleChangeSelect(e)}
+                                    // onChange={onChange}
+                                    onChange={function (event) {
+                                        onChange(event);
+                                        handleChangeSelect(event);
+                                    }}
                                     value={changeAds}
                                 >
-                                    <option value="sans-pub">Sans pub</option>
                                     <option value="avec-pub">Avec pub</option>
+                                    <option value="sans-pub">Sans pub</option>
                                 </select>
                             </div>
                         </SelectStyled>

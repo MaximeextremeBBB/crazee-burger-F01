@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router-dom";
 import { initialiseUserSession } from "./helpers/initialiseUserSession";
+import { useHandleChangeSelect } from "../../../hooks/useHandleChangeSelect";
 
 export default function OrderPage() {
     // state
@@ -17,12 +18,19 @@ export default function OrderPage() {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [currentTabSelected, setCurrentTabSelected] = useState("add");
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
-    const [changeAvailable, setChangeAvailable] = useState("en-stock");
     const [changeAds, setChangeAds] = useState("sans-pub");
+    const [changeAvailable, setChangeAvailable] = useState("en-stock");
+    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
     const titleEditRef = useRef();
     const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =
         useMenu();
+    // const {
+    // handleChangeSelect,
+    // changeAds,
+    // setChangeAds,
+    // changeAvailable,
+    // setChangeAvailable,
+    // } = useHandleChangeSelect();
     const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } =
         useBasket();
     const { username } = useParams();
