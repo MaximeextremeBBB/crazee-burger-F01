@@ -40,6 +40,8 @@ export default function AddForm() {
             id: crypto.randomUUID(),
             price: replaceFrenchCommaWithDot(newProduct.price),
             ads: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
+            available:
+                changeAvailable === "en-stock" ? "en-stock" : "en-rupture",
         };
         handleAdd(newProductToAdd, username);
         setNewProduct(EMPTY_PRODUCT);

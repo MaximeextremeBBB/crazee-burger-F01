@@ -55,38 +55,45 @@ export default function Menu() {
 
     return (
         <TransitionGroup component={MenuStyled} className="menu">
-            {menu.map(({ id, title, imageSource, price, isAds, ads }) => {
-                return (
-                    <CSSTransition
-                        classNames={"menu-animation"}
-                        key={id}
-                        timeout={300}
-                    >
-                        <Card
-                            title={title}
-                            imageSource={
-                                imageSource ? imageSource : IMAGE_COMING_SOON
-                            }
-                            leftDescription={formatPrice(price)}
-                            hasDeleteButton={isModeAdmin}
-                            onDelete={(event) => handleCardDelete(event, id)}
-                            onClick={
-                                isModeAdmin
-                                    ? () => handleProductSelected(id)
-                                    : null
-                            }
-                            isHoverable={isModeAdmin}
-                            isSelected={checkIfProductIsClicked(
-                                id,
-                                productSelected.id
-                            )}
-                            onAdd={(event) => handleAddButton(event, id)}
-                            isAds={isAds}
-                            ads={ads}
-                        />
-                    </CSSTransition>
-                );
-            })}
+            {menu.map(
+                ({ id, title, imageSource, price, isAds, ads, available }) => {
+                    return (
+                        <CSSTransition
+                            classNames={"menu-animation"}
+                            key={id}
+                            timeout={300}
+                        >
+                            <Card
+                                title={title}
+                                imageSource={
+                                    imageSource
+                                        ? imageSource
+                                        : IMAGE_COMING_SOON
+                                }
+                                leftDescription={formatPrice(price)}
+                                hasDeleteButton={isModeAdmin}
+                                onDelete={(event) =>
+                                    handleCardDelete(event, id)
+                                }
+                                onClick={
+                                    isModeAdmin
+                                        ? () => handleProductSelected(id)
+                                        : null
+                                }
+                                isHoverable={isModeAdmin}
+                                isSelected={checkIfProductIsClicked(
+                                    id,
+                                    productSelected.id
+                                )}
+                                onAdd={(event) => handleAddButton(event, id)}
+                                isAds={isAds}
+                                ads={ads}
+                                available={available}
+                            />
+                        </CSSTransition>
+                    );
+                }
+            )}
         </TransitionGroup>
     );
 }

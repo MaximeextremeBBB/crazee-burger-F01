@@ -15,8 +15,8 @@ export default function Card({
     isHoverable,
     isSelected,
     onAdd,
-    isAds,
     ads,
+    available,
 }) {
     // state (vide)
 
@@ -44,6 +44,12 @@ export default function Card({
                 <div className="image">
                     {ads === "avec-pub" ? <Ribbon /> : null}
                     <img src={imageSource} alt={title} />
+                    {available === "en-rupture" ? (
+                        <OutOfStockImageStyled
+                            src="/images/stock-epuise.png"
+                            alt="photo précisant que le stock est épuisé"
+                        />
+                    ) : null}
                 </div>
                 <div className="text-info">
                     <div className="title">{title}</div>
@@ -182,6 +188,10 @@ const CardStyled = styled.div`
         ${({ isHoverable, isSelected }) =>
             isHoverable && isSelected && selectedStyle}
     }
+`;
+
+const OutOfStockImageStyled = styled.img`
+    transform: translateY(-145px);
 `;
 
 const hoverableStyle = css`

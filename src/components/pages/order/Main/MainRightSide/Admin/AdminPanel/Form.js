@@ -76,7 +76,8 @@ const Form = React.forwardRef(
                                 <select
                                     name="available"
                                     id="available"
-                                    onChange={(event) => {
+                                    onChange={function (event) {
+                                        onChange(event);
                                         handleChangeSelect(event);
                                     }}
                                     value={changeAvailable}
@@ -96,8 +97,6 @@ const Form = React.forwardRef(
                                 <select
                                     name="ads"
                                     id="ads"
-                                    // onChange={(e) => handleChangeSelect(e)}
-                                    // onChange={onChange}
                                     onChange={function (event) {
                                         onChange(event);
                                         handleChangeSelect(event);
