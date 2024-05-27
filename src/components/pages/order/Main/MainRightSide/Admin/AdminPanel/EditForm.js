@@ -36,27 +36,13 @@ export default function EditForm() {
     const handleChange = async (event) => {
         event.preventDefault();
         const { name, value } = event.target;
-        // const valueSelect = event.target.value;
-        // if (valueSelect === "enStock" || valueSelect === "enRupture") {
-        //     setChangeAvailable(valueSelect);
-        // }
-        // if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {
-        //     setChangeAds(valueSelect);
-        // }
-        console.log("changeAds : ", changeAds);
-        await handleChangeSelect(event);
 
-        console.log("changeAds : ", changeAds);
-        console.log("event.target : ", event.target);
-        console.log("productSelected : ", productSelected);
+        await handleChangeSelect(event);
 
         const productBeingUpdated = {
             ...productSelected,
             [name]: value,
-            // ads: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
-            // isAds: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
         };
-        console.log("productBeingUpdated : ", productBeingUpdated);
 
         setProductSelected(productBeingUpdated); // cette ligne update le formulaire
         handleEdit(productBeingUpdated, username); // cette ligne update le menu

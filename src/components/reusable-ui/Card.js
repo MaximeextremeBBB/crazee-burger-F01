@@ -80,7 +80,7 @@ const CardStyled = styled.div`
 
     .card {
         background: ${theme.colors.white};
-        /* opacity: 0.5; */
+        opacity: 0.5;
         box-sizing: border-box;
         width: 240px;
         height: 330px;
@@ -128,6 +128,9 @@ const CardStyled = styled.div`
             height: auto;
             margin-top: 30px;
             margin-bottom: 20px;
+            #test {
+                opacity: 1;
+            }
 
             img {
                 width: 100%;
@@ -191,13 +194,17 @@ const CardStyled = styled.div`
         ${({ isHoverable, isSelected }) =>
             isHoverable && isSelected && selectedStyle}
     }
+    ${({ available }) => isCardHideStyled[available]}
 `;
 
 const OutOfStockImageStyled = styled.img`
-    opacity: 1;
     transform: translateY(-145px);
+    opacity: 1 !important;
 `;
 const styleHide = css`
+    .card {
+        background: red;
+    }
     .primary-button {
         cursor: not-allowed;
     }
@@ -210,6 +217,22 @@ const styleAllowed = css`
 const toggleButtonHide = {
     enStock: styleAllowed,
     enRupture: styleHide,
+};
+
+const cardHideStyled = css`
+    .card {
+        opacity: 0.5;
+    }
+`;
+const cardNotHideStyled = css`
+    .card {
+        opacity: 1;
+    }
+`;
+
+const isCardHideStyled = {
+    enStock: cardNotHideStyled,
+    enRupture: cardHideStyled,
 };
 
 const hoverableStyle = css`
