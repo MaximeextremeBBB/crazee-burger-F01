@@ -19,7 +19,7 @@ export default function OrderPage() {
     const [currentTabSelected, setCurrentTabSelected] = useState("add");
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
     const [changeAds, setChangeAds] = useState("sans-pub");
-    const [changeAvailable, setChangeAvailable] = useState("en-stock");
+    const [changeAvailable, setChangeAvailable] = useState("enStock");
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
     const titleEditRef = useRef();
     const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } =

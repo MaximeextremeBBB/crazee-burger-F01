@@ -82,8 +82,8 @@ const Form = React.forwardRef(
                                     }}
                                     value={changeAvailable}
                                 >
-                                    <option value="en-stock">En stock</option>
-                                    <option value="en-rupture">
+                                    <option value="enStock">En stock</option>
+                                    <option value="enRupture">
                                         En rupture
                                     </option>
                                 </select>

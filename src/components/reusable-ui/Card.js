@@ -29,6 +29,7 @@ export default function Card({
             onClick={onClick}
             isHoverable={isHoverable}
             isSelected={isSelected}
+            available={available}
         >
             <div className="card">
                 {hasDeleteButton && (
@@ -44,7 +45,7 @@ export default function Card({
                 <div className="image">
                     {ads === "avec-pub" ? <Ribbon /> : null}
                     <img src={imageSource} alt={title} />
-                    {available === "en-rupture" ? (
+                    {available === "enRupture" ? (
                         <OutOfStockImageStyled
                             src="/images/stock-epuise.png"
                             alt="photo précisant que le stock est épuisé"
@@ -79,6 +80,7 @@ const CardStyled = styled.div`
 
     .card {
         background: ${theme.colors.white};
+        /* opacity: 0.5; */
         box-sizing: border-box;
         width: 240px;
         height: 330px;
@@ -175,24 +177,40 @@ const CardStyled = styled.div`
                     justify-content: flex-end;
                     align-items: center;
                     font-size: ${theme.fonts.size.P1};
-
                     .primary-button {
                         font-size: ${theme.fonts.size.XS};
-                        cursor: pointer;
+                        /* cursor: pointer; */
+                        /* cursor: not-allowed; */
                         padding: 12px;
                     }
                 }
             }
         }
 
+        ${({ available }) => toggleButtonHide[available]}
         ${({ isHoverable, isSelected }) =>
             isHoverable && isSelected && selectedStyle}
     }
 `;
 
 const OutOfStockImageStyled = styled.img`
+    opacity: 1;
     transform: translateY(-145px);
 `;
+const styleHide = css`
+    .primary-button {
+        cursor: not-allowed;
+    }
+`;
+const styleAllowed = css`
+    .primary-button {
+        cursor: pointer;
+    }
+`;
+const toggleButtonHide = {
+    enStock: styleAllowed,
+    enRupture: styleHide,
+};
 
 const hoverableStyle = css`
     :hover {

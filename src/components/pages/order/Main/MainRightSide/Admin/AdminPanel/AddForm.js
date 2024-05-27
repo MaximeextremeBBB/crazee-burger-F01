@@ -25,7 +25,7 @@ export default function AddForm() {
     // comportements
     const handleChangeSelect = (event) => {
         const valueSelect = event.target.value;
-        if (valueSelect === "en-stock" || valueSelect === "en-rupture") {
+        if (valueSelect === "enStock" || valueSelect === "enRupture") {
             setChangeAvailable(valueSelect);
         }
         if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {
@@ -40,8 +40,7 @@ export default function AddForm() {
             id: crypto.randomUUID(),
             price: replaceFrenchCommaWithDot(newProduct.price),
             ads: changeAds === "avec-pub" ? "avec-pub" : "sans-pub",
-            available:
-                changeAvailable === "en-stock" ? "en-stock" : "en-rupture",
+            available: changeAvailable === "enStock" ? "enStock" : "enRupture",
         };
         handleAdd(newProductToAdd, username);
         setNewProduct(EMPTY_PRODUCT);

@@ -27,7 +27,7 @@ export default function EditForm() {
     const handleChangeSelect = (e) => {
         e.preventDefault();
         const value = e.target.value;
-        if (value === "en-stock" || value === "en-rupture") {
+        if (value === "enStock" || value === "enRupture") {
             return setChangeAvailable(value);
         }
         return setChangeAds(value);
@@ -37,7 +37,7 @@ export default function EditForm() {
         event.preventDefault();
         const { name, value } = event.target;
         // const valueSelect = event.target.value;
-        // if (valueSelect === "en-stock" || valueSelect === "en-rupture") {
+        // if (valueSelect === "enStock" || valueSelect === "enRupture") {
         //     setChangeAvailable(valueSelect);
         // }
         // if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {

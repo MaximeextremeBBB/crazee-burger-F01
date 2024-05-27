@@ -85,7 +85,11 @@ export default function Menu() {
                                     id,
                                     productSelected.id
                                 )}
-                                onAdd={(event) => handleAddButton(event, id)}
+                                onAdd={
+                                    available === "enStock"
+                                        ? (event) => handleAddButton(event, id)
+                                        : null
+                                }
                                 isAds={isAds}
                                 ads={ads}
                                 available={available}

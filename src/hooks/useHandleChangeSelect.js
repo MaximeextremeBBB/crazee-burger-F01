@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 export const useHandleChangeSelect = () => {
     // const [changeAds, setChangeAds] = useState("sans-pub");
-    // const [changeAvailable, setChangeAvailable] = useState("en-stock");
+    // const [changeAvailable, setChangeAvailable] = useState("enStock");
     // const handleChangeSelect = (event) => {
     //     const valueSelect = event.target.value;
-    //     if (valueSelect === "en-stock" || valueSelect === "en-rupture") {
+    //     if (valueSelect === "enStock" || valueSelect === "enRupture") {
     //         setChangeAvailable(valueSelect);
     //     }
     //     if (valueSelect === "avec-pub" || valueSelect === "sans-pub") {

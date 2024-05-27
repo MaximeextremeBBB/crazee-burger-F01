@@ -20,8 +20,6 @@ export default function BasketProducts() {
         productSelected,
     } = useContext(OrderContext);
 
-    console.log("basket : ", basket);
-
     const handleOnDelete = (event, id) => {
         event.stopPropagation();
         handleDeleteBasketProduct(id, username);
@@ -34,7 +32,6 @@ export default function BasketProducts() {
         >
             {basket.map((basketProduct) => {
                 const menuProduct = findObjectById(basketProduct.id, menu);
-                console.log("menuProduct : ", menuProduct.ads);
                 return (
                     <CSSTransition
                         appear={true}
