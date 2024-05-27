@@ -18,6 +18,7 @@ export default function BasketProducts() {
         menu,
         handleProductSelected,
         productSelected,
+        available,
     } = useContext(OrderContext);
 
     const handleOnDelete = (event, id) => {
@@ -32,6 +33,7 @@ export default function BasketProducts() {
         >
             {basket.map((basketProduct) => {
                 const menuProduct = findObjectById(basketProduct.id, menu);
+                console.log("menuProduct : ", menuProduct);
                 return (
                     <CSSTransition
                         appear={true}
@@ -66,6 +68,7 @@ export default function BasketProducts() {
                                 )}
                                 className={"card"}
                                 ads={menuProduct.ads}
+                                available={menuProduct.available}
                             />
                         </div>
                     </CSSTransition>

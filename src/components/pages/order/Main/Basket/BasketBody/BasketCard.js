@@ -17,6 +17,7 @@ export default function BasketCard({
     onDelete,
     isSelected,
     ads,
+    available,
 }) {
     return (
         <BasketCardStyled
@@ -40,7 +41,11 @@ export default function BasketCard({
                     <span className="price">{formatPrice(price)}</span>
                 </div>
                 <div className="quantity">
-                    <CasinoEffect count={`x ${quantity}`} />
+                    {available === "enStock" ? (
+                        <CasinoEffect count={`x ${quantity}`} />
+                    ) : (
+                        ""
+                    )}
                 </div>
             </div>
         </BasketCardStyled>
