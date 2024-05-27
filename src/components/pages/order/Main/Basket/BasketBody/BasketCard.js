@@ -38,15 +38,17 @@ export default function BasketCard({
                     <div className="title">
                         <span>{title}</span>
                     </div>
-                    <span className="price">{formatPrice(price)}</span>
-                </div>
-                <div className="quantity">
                     {available === "enStock" ? (
-                        <CasinoEffect count={`x ${quantity}`} />
+                        <span className="price">{formatPrice(price)}</span>
                     ) : (
-                        ""
+                        <span className="price">Non disponible</span>
                     )}
                 </div>
+                {available === "enStock" ? (
+                    <div className="quantity">
+                        <CasinoEffect count={`x ${quantity}`} />
+                    </div>
+                ) : null}
             </div>
         </BasketCardStyled>
     );
@@ -116,6 +118,8 @@ const BasketCardStyled = styled.div`
 
             .price {
                 /* background: blue; */
+                padding-right: 34px;
+                width: 100%;
                 font-size: ${theme.fonts.size.SM};
                 font-weight: ${theme.fonts.weights.medium};
                 font-family: ${theme.fonts.family.openSans};
