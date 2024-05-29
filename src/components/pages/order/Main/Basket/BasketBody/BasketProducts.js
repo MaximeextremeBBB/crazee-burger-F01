@@ -33,7 +33,6 @@ export default function BasketProducts() {
         >
             {basket.map((basketProduct) => {
                 const menuProduct = findObjectById(basketProduct.id, menu);
-                console.log("menuProduct : ", menuProduct);
                 return (
                     <CSSTransition
                         appear={true}

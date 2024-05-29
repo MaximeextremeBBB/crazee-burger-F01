@@ -20,7 +20,6 @@ export default function AddForm() {
         setChangeAvailable,
     } = useContext(OrderContext);
     const { isSubmitted, displaySuccessMessage } = useSuccessMessage();
-    // const { handleChangeSelect } = useHandleChangeSelect();
 
     // comportements
     const handleChangeSelect = (event) => {

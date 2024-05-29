@@ -21,6 +21,8 @@ export default function EditForm() {
 
     const [valueOnFocus, setvalueOnFocus] = useState();
     const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage();
+    console.log("productSelected : ", productSelected.ads);
+    console.log('changeAds : ', changeAds);
 
     // comportements (gestionnaires d'événement ou "event handlers")
 
@@ -43,7 +45,7 @@ export default function EditForm() {
             ...productSelected,
             [name]: value,
         };
-
+        console.log("productBeingUpdated : ", productBeingUpdated);
         setProductSelected(productBeingUpdated); // cette ligne update le formulaire
         handleEdit(productBeingUpdated, username); // cette ligne update le menu
     };
