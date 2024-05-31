@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function Button({ label, Icon, className, version = "normal", onClick, disabled }) {
+export default function Button({ label, Icon, className, version = "normal", onClick }) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled}>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -14,7 +14,7 @@ const ButtonStyled = styled.button`
   ${({ version }) => extraStyle[version]};
 `
 
-const extraStyleNormal = css`
+const extraStylePrimary = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
@@ -32,7 +32,6 @@ const extraStyleNormal = css`
   color: white;
   background-color: #ff9f1b;
   border: 1px solid #ff9f1b;
-  cursor: pointer;
 
   :hover {
     color: ${theme.colors.primary};
@@ -45,7 +44,7 @@ const extraStyleNormal = css`
     color: ${theme.colors.white};
   }
 
-  &:disabled {
+  &.is-disabled {
     opacity: 50%;
     cursor: not-allowed;
     z-index: 2;
@@ -94,6 +93,6 @@ const extraStyleSuccess = css`
   }
 `
 const extraStyle = {
-  normal: extraStyleNormal,
+  normal: extraStylePrimary,
   success: extraStyleSuccess,
 }
