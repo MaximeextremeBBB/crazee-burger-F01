@@ -9011,7 +9011,7 @@ tr46@^2.1.0:
   dependencies:
     punycode "^2.1.1"
 
-transition-group@^4.4.5:
+transition-group@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/transition-group/-/transition-group-0.0.2.tgz#be74ce52af74b946339f276726439c930c2b4d24"
   integrity sha512-jNE+mtHgOHd6lb4zMHI/XtdoLKdf7mLr1WJYbn9Fk2ThcRZPVp7kUv8RaZ5BPiiiGtzeWu163CjgMub6izzadw==
